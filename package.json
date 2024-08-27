@@ -1,20 +1,31 @@
 {
   "name": "rich-text-editor",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky",
+    "lint": "eslint .",
+    "format": "eslint --fix ."
   },
   "dependencies": {
     "vue": "^3.4.37"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.27.3",
+    "@iconify/json": "^2.2.241",
+    "@unocss/eslint-plugin": "^0.62.3",
     "@vitejs/plugin-vue": "^5.1.2",
+    "eslint": "^9.9.1",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
     "typescript": "^5.5.3",
+    "unocss": "^0.62.3",
     "vite": "^5.4.1",
     "vue-tsc": "^2.0.29"
+  },
+  "lint-staged": {
+    "*": "pnpm eslint --fix"
   }
 }
