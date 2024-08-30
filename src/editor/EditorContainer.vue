@@ -4,14 +4,14 @@ import StarterKit from '@tiptap/starter-kit'
 import placeholder from '@tiptap/extension-placeholder'
 
 // custom extensions
-import { metadata } from './extensions/metadata'
+import { symbol } from './extensions/symbol'
 import { EditorHandle } from './extensions/handle'
 
 const editor = useEditor({
   extensions: [
     StarterKit,
     placeholder,
-    metadata,
+    symbol,
   ],
   autofocus: 'start',
 })

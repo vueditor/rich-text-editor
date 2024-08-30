@@ -2,8 +2,8 @@ import type { GlobalAttributes, Mark, Node } from '@tiptap/core'
 import { Extension } from '@tiptap/core'
 import { EXTENSION_TYPE, NODE_GROUP } from '@/editor/utils/constants'
 
-export const metadata = Extension.create({
-  name: 'metadata',
+export const symbol = Extension.create({
+  name: 'symbol',
   addGlobalAttributes() {
     return [
       ...genBlockNodesGlobalAttributes(this.extensions),
