@@ -116,7 +116,7 @@ export class HandleView {
     }
     else if (!this.getTargetPos() && !!this.handleElement) {
       Object.assign(this.handleElement.style, {
-        top: '-64px',
+        top: '-128px',
       })
     }
   }
