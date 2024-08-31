@@ -54,6 +54,10 @@ const editor = useEditor({
   .tiptap {
     @apply bg-white px-12 py-4 focus-visible:outline-none border border-solid border-gray-100 rounded-2 hover:drop-shadow-sm focus-visible:!drop-shadow;
 
+    .ProseMirror-selectednode {
+      @apply bg-blue-100/50;
+    }
+
     [data-placeholder]::before {
       @apply content-[attr(data-placeholder)] text-gray-300 float-left h-0 pointer-events-none;
     }
