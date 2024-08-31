@@ -19,6 +19,7 @@
     "@tiptap/vue-3": "^2.6.6",
     "@unocss/reset": "^0.62.3",
     "lodash-es": "^4.17.21",
+    "nanoid": "^5.0.7",
     "vue": "^3.4.37"
   },
   "devDependencies": {
