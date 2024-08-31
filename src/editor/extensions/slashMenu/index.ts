@@ -3,7 +3,7 @@ import type { Editor, Range } from '@tiptap/core'
 import suggestion from '@tiptap/suggestion'
 import type { SuggestionOptions, SuggestionProps } from '@tiptap/suggestion'
 import { VueRenderer } from '@tiptap/vue-3'
-import { computePosition, flip } from '@floating-ui/dom'
+import { computePosition, flip, offset } from '@floating-ui/dom'
 import EditorSlashMenu from './EditorSlashMenu.vue'
 import { KEYBOARD_EVENT_KEYS } from '@/editor/utils/constants'
 
@@ -124,7 +124,7 @@ export const slashMenu = Extension.create<SlashMenuOptions>({
               {
                 strategy: 'fixed',
                 placement: 'bottom-start',
-                middleware: [flip()],
+                middleware: [flip(), offset(8)],
               },
             ).then(({ x, y }) => {
               Object.assign((component!.element as HTMLElement).style, {
@@ -142,18 +142,27 @@ export const slashMenu = Extension.create<SlashMenuOptions>({
 
           return {
             onStart: (props) => {
+              if (!props.items.length) {
+                destroy()
+                return
+              }
               updatePosition(props)
             },
             onUpdate(props) {
+              if (!props.items.length) {
+                destroy()
+                return
+              }
+
               updatePosition(props)
             },
-            onKeyDown({ event }) {
-              if (event.key === KEYBOARD_EVENT_KEYS.ESCAPE) {
+            onKeyDown(props) {
+              if (props.event.key === KEYBOARD_EVENT_KEYS.ESCAPE) {
                 destroy()
                 return false
               }
 
-              return component?.ref?.onKeyDown(event)
+              return component?.ref?.onKeyDown(props)
             },
             onExit() {
               destroy()

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import type { SuggestionProps } from '@tiptap/suggestion'
+import type { SuggestionKeyDownProps, SuggestionProps } from '@tiptap/suggestion'
 import type { SlashMenuCommand, SlashMenuItem } from './index'
 import { SLASH_MENU_ITEM_GROUP } from './index'
 import { KEYBOARD_EVENT_KEYS } from '@/editor/utils/constants'
@@ -47,7 +47,7 @@ function selectItem(index: number) {
   const item = items.find(_item => _item.index === index)
   item?.command(props.editor, props.range)
 }
-function onKeyDown(event: KeyboardEvent) {
+function onKeyDown({ event }: SuggestionKeyDownProps) {
   switch (event.key) {
     case KEYBOARD_EVENT_KEYS.ARROW_UP: {
       currentIndex.value = (currentIndex.value + props.items.length - 1) % props.items.length
