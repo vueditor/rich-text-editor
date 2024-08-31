@@ -20,7 +20,20 @@ const editor = useEditor({
     taskList,
     taskItem,
     placeholder.configure({
-      placeholder: 'Write something, or "/" for commands',
+      placeholder: ({ node }) => {
+        switch (node.type.name) {
+          case 'heading': {
+            return `Heading ${node.attrs.level - 1}`
+          }
+          case 'bulletList':
+          case 'orderedList':
+          case 'taskList': {
+            return ''
+          }
+        }
+
+        return 'Write something, or "/" for commands'
+      },
     }),
     symbol,
     slashMenu,
@@ -41,12 +54,12 @@ const editor = useEditor({
   .tiptap {
     @apply bg-white px-12 py-4 focus-visible:outline-none border border-solid border-gray-100 rounded-2 hover:drop-shadow-sm focus-visible:!drop-shadow;
 
-    p.is-empty::before {
+    [data-placeholder]::before {
       @apply content-[attr(data-placeholder)] text-gray-300 float-left h-0 pointer-events-none;
     }
 
     [data-name="paragraph"] {
-      @apply  my-0;
+      @apply my-0;
     }
   }
 }
