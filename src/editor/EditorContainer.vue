@@ -52,7 +52,7 @@ const editor = useEditor({
 <style lang="scss">
 .editor-container {
   .tiptap {
-    @apply bg-white px-12 py-4 focus-visible:outline-none border border-solid border-gray-100 rounded-2 hover:drop-shadow-sm focus-visible:!drop-shadow;
+    @apply bg-white px-16 py-4 focus-visible:outline-none border border-solid border-gray-100 rounded-2 hover:drop-shadow-sm focus-visible:!drop-shadow;
 
     .ProseMirror-selectednode {
       @apply bg-blue-100/50;

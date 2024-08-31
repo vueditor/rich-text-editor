@@ -77,7 +77,7 @@ defineExpose({
 </script>
 
 <template>
-  <dl ref="menuRef" class="fixed border border-stone-100 rounded-2 border-solid bg-gray-50 p-2 shadow-lg">
+  <dl ref="menuRef" class="fixed my-0 border border-stone-100 rounded-2 border-solid bg-gray-50 p-2 shadow-lg">
     <template v-for="group in itemsGroups" :key="group.label">
       <dt class="mb-1 pl-2 text-xs">
         {{ group.label }}
