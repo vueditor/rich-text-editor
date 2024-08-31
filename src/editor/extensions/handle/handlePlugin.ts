@@ -2,7 +2,7 @@ import { NodeSelection, Plugin, PluginKey } from '@tiptap/pm/state'
 import type { EditorView } from '@tiptap/pm/view'
 import { debounce } from 'lodash-es'
 import { computePosition, offset } from '@floating-ui/dom'
-import { isMac } from '@/editor/utils/env'
+import { isMacOS } from '@tiptap/core'
 
 interface HandleState {
   pos: number
@@ -69,7 +69,7 @@ export class HandleView {
 
     this.editorView.dragging = {
       slice: selection.content(),
-      move: !e[isMac ? 'altKey' : 'ctrlKey'],
+      move: !e[isMacOS() ? 'altKey' : 'ctrlKey'],
     }
   }
 
