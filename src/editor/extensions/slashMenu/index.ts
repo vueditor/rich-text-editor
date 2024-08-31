@@ -96,6 +96,7 @@ export const slashMenu = Extension.create<SlashMenuOptions>({
         command({ editor, range, props }) {
           props.command(editor, range)
         },
+        allow: ({ editor }) => editor.isFocused,
         render() {
           let component: VueRenderer | null
 
