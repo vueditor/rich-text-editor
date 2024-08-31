@@ -63,7 +63,7 @@ export class HandleView {
     const y = handleBox.y - nodeBox.y + e.offsetY
     e.dataTransfer?.setDragImage(this.getTargetDom()!, x, y)
 
-    const selection = NodeSelection.create(this.editorView.state.doc, this.getTargetPos()!)
+    const selection = NodeSelection.create(this.editorView.state.doc, this.getTargetPos()! - 1)
     const transaction = this.editorView.state.tr.setSelection(selection)
     this.editorView.dispatch(transaction)
 
