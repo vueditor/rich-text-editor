@@ -58,8 +58,24 @@ const editor = useEditor({
       @apply content-[attr(data-placeholder)] text-gray-300 float-left h-0 pointer-events-none;
     }
 
-    [data-name="paragraph"] {
+    [data-name='paragraph'] {
       @apply my-0;
+    }
+
+    ol ol {
+      @apply list-roman;
+
+      & ol {
+        @apply list-alpha;
+      }
+    }
+
+    [data-checked] {
+      @apply flex items-center gap-1;
+
+      &[data-checked='true'] {
+        @apply line-through;
+      }
     }
   }
 }
