@@ -1,17 +1,29 @@
 <script lang="ts" setup>
 import { EditorContent, useEditor } from '@tiptap/vue-3'
-import StarterKit from '@tiptap/starter-kit'
+import starterKit from '@tiptap/starter-kit'
+import taskList from '@tiptap/extension-task-list'
+import taskItem from '@tiptap/extension-task-item'
 import placeholder from '@tiptap/extension-placeholder'
 
 // custom extensions
 import { symbol } from './extensions/symbol'
 import { EditorHandle } from './extensions/handle'
+import { slashMenu } from './extensions/slashMenu'
 
 const editor = useEditor({
   extensions: [
-    StarterKit,
-    placeholder,
+    starterKit.configure({
+      heading: {
+        levels: [1, 2, 3, 4],
+      },
+    }),
+    taskList,
+    taskItem,
+    placeholder.configure({
+      placeholder: 'Write something, or "/" for commands',
+    }),
     symbol,
+    slashMenu,
   ],
   autofocus: 'start',
 })

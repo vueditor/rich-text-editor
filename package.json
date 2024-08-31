@@ -12,7 +12,10 @@
   "dependencies": {
     "@floating-ui/dom": "^1.6.10",
     "@tiptap/extension-placeholder": "^2.6.6",
+    "@tiptap/extension-task-item": "^2.6.6",
+    "@tiptap/extension-task-list": "^2.6.6",
     "@tiptap/starter-kit": "^2.6.6",
+    "@tiptap/suggestion": "^2.6.6",
     "@tiptap/vue-3": "^2.6.6",
     "@unocss/reset": "^0.62.3",
     "lodash-es": "^4.17.21",

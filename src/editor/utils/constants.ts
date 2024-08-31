@@ -7,3 +7,10 @@ export const NODE_GROUP = {
   BLOCK: 'block',
   INLINE: 'inline',
 }
+
+export const KEYBOARD_EVENT_KEYS = {
+  ESCAPE: 'Escape',
+  ARROW_UP: 'ArrowUp',
+  ARROW_DOWN: 'ArrowDown',
+  ENTER: 'Enter',
+}
