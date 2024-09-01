@@ -20,9 +20,16 @@ export default defineConfig({
       transform: `rotateX(${d}deg)`,
     })],
   ],
+  shortcuts: [
+    [
+      /^divider-(x|y)$/,
+      ([,direction]) => `bg-zinc-200 rounded-0.5 ${direction === 'y' ? 'w-0.5 h-full' : 'h-0.5'}`,
+    ],
+  ],
   autocomplete: {
     templates: [
       'rotate-x-<deg>',
+      'divider-(x|y)',
     ],
   },
 })
