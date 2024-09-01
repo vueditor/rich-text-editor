@@ -9,7 +9,7 @@ const props = defineProps<{
 }>()
 const { editor } = toRefs(props)
 
-const disabled = computed(() => !editor.value.isEditable)
+const disabled = computed(() => !editor.value.view.editable)
 
 const findItemByLabel = (label: string) => slashMenuItems.find(item => item.label === label)
 const activatedItem = computed(() => {
@@ -49,7 +49,7 @@ function onClickItem(item: SlashMenuItem) {
 
 <template>
   <Floating ref="floatingRef" mode="click" placement="bottom-start" :disabled="disabled">
-    <div class="flex cursor-pointer items-center gap-1 rounded-2 px-2 py-1 text-sm font-600 transition-colors hover:bg-color-hover-soft text-color-primary" :class="{ 'cursor-not-allowed': disabled }" :title="activatedItem?.desc">
+    <div class="flex cursor-pointer items-center gap-1 rounded-2 px-2 py-1 text-sm font-600 transition-colors hover:bg-color-hover-soft text-color-primary" :class="{ 'cursor-not-allowed !bg-transparent': disabled }" :title="activatedItem?.desc">
       <span> {{ activatedItem?.label }}</span>
       <div class="text-xl transition-transform transition-duration-300" :class="{ 'rotate-x-180': !!floatingRef?.visible }">
         <div class="i-iconamoon:arrow-down-2 h-1em w-1em" />
