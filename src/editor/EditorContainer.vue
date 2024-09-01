@@ -12,7 +12,10 @@ import { EditorHandle } from './extensions/handle'
 import { slashMenu } from './extensions/slashMenu'
 import EditorHeader from './EditorHeader.vue'
 
+import content from './template/intro.json'
+
 const editor = useEditor({
+  content,
   extensions: [
     starterKit.configure({
       heading: false,
