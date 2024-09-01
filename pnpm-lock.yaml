@@ -57,6 +57,9 @@ importers:
       '@iconify/json':
         specifier: ^2.2.241
         version: 2.2.241
+      '@types/dom-view-transitions':
+        specifier: ^1.0.5
+        version: 1.0.5
       '@types/file-saver':
         specifier: ^2.0.7
         version: 2.0.7
@@ -1003,6 +1006,9 @@ packages:
       '@tiptap/core': ^2.6.6
       '@tiptap/pm': ^2.6.6
       vue: ^3.0.0
+
+  '@types/dom-view-transitions@1.0.5':
+    resolution: {integrity: sha512-N2sILR7fxSMnaFaAPwGj4DtHCXjIyQTHt+xJyf9jATpzUsTkMNM0DWtqZB6W7f501B/Y0tq3uqat/VlbjuTpMA==}
 
   '@types/eslint@8.56.12':
     resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
@@ -3878,6 +3884,8 @@ snapshots:
       '@tiptap/extension-floating-menu': 2.6.6(@tiptap/core@2.6.6(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
       '@tiptap/pm': 2.6.6
       vue: 3.4.38(typescript@5.5.4)
+
+  '@types/dom-view-transitions@1.0.5': {}
 
   '@types/eslint@8.56.12':
     dependencies:
