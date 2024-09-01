@@ -115,7 +115,7 @@ export class HandleView {
     }
     else if (!this.getTargetPos() && !!this.handleElement) {
       Object.assign(this.handleElement.style, {
-        transform: 'translateY(-64px)',
+        transform: 'translateY(-128px)',
       })
     }
   }
