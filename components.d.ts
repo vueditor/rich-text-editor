@@ -8,6 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Dropdown: typeof import('./src/components/Dropdown.vue')['default']
+    EditorContainer: typeof import('./src/editor/EditorContainer.vue')['default']
+    EditorHandle: typeof import('./src/editor/extensions/handle/EditorHandle.vue')['default']
+    EditorHeader: typeof import('./src/editor/EditorHeader.vue')['default']
+    EditorNodeSelect: typeof import('./src/editor/EditorNodeSelect.vue')['default']
+    EditorSlashMenu: typeof import('./src/editor/extensions/slashMenu/EditorSlashMenu.vue')['default']
+    EditorTheme: typeof import('./src/editor/EditorTheme.vue')['default']
     Floating: typeof import('./src/components/Floating.vue')['default']
   }
 }

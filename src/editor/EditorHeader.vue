@@ -3,7 +3,6 @@ import type { Editor } from '@tiptap/core'
 import { destr } from 'destr'
 import type { DropdownOption } from '../components/Dropdown.vue'
 import { downloadHTML } from '../utils/download'
-import EditorNodeSelect from './EditorNodeSelect.vue'
 
 const props = defineProps<{
   editor: Editor
@@ -50,17 +49,22 @@ const downloadOptions: DropdownOption[] = [
 </script>
 
 <template>
-  <header class="flex items-center bg-gray-100 px-14 py-2 text-neutral-800">
-    <EditorNodeSelect :editor="editor" />
-    <div class="mx-2 divider-y h-6" />
-    <div class="cursor-pointer rounded p-1 transition-colors hover:bg-zinc-200" @click="importContent">
-      <div class="i-ic:round-upload h-1em w-1em" />
+  <header class="flex items-center justify-between px-14 py-2 bg-color-soft text-color-base">
+    <div class="flex">
+      <EditorNodeSelect :editor="editor" />
     </div>
-    <Dropdown :options="downloadOptions">
-      <div class="cursor-pointer rounded p-1 transition-colors hover:bg-zinc-200">
-        <div class="i-ic:round-download h-1em w-1em" />
+    <div class="flex items-center">
+      <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" @click="importContent">
+        <div class="i-ic:round-upload h-1em w-1em" />
       </div>
-    </Dropdown>
+      <Dropdown :options="downloadOptions">
+        <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft">
+          <div class="i-ic:round-download h-1em w-1em" />
+        </div>
+      </Dropdown>
+      <div class="mx-2 divider-y h-6 bg-zinc-300 dark:bg-zinc-500" />
+      <EditorTheme />
+    </div>
   </header>
 </template>
 

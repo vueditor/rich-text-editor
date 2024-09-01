@@ -10,9 +10,7 @@ import { document } from './extensions/document'
 import { title } from './extensions/title'
 import { heading } from './extensions/heading'
 import { symbol } from './extensions/symbol'
-import { EditorHandle } from './extensions/handle'
 import { slashMenu } from './extensions/slashMenu'
-import EditorHeader from './EditorHeader.vue'
 
 import content from './templates/intro.json'
 
@@ -52,7 +50,7 @@ const editor = useEditor({
 </script>
 
 <template>
-  <div class="editor-container border border-gray-100 rounded-2 border-solid bg-white focus-visible:drop-shadow hover:drop-shadow-sm">
+  <div class="editor-container overflow-hidden border rounded-2 border-solid border-color-base bg-color-strong focus-visible:drop-shadow hover:drop-shadow-sm">
     <EditorHeader v-if="editor" :editor="editor" />
     <EditorContent :editor="editor" />
     <EditorHandle v-if="editor" :editor="editor" />

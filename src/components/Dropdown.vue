@@ -26,7 +26,7 @@ function onCommand(command: DropdownOption['command']) {
         <li
           v-for="item in options"
           :key="item.label"
-          class="flex cursor-pointer items-center gap-1 rounded-2 px-2 py-1 transition-colors hover:bg-zinc-200 hover:text-blue-500"
+          class="flex cursor-pointer items-center gap-1 rounded-2 px-2 py-1 transition-colors hover:bg-zinc-200 hover:text-color-primary"
           @click="onCommand(item.command)"
         >
           <div>

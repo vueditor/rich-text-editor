@@ -103,7 +103,7 @@ defineExpose({
           <div class="text-sm">
             {{ item.label }}
           </div>
-          <p class="my-0 text-xs text-slate-500">
+          <p class="my-0 text-xs text-color-soft">
             {{ item.desc }}
           </p>
         </div>

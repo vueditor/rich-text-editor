@@ -1,4 +1,5 @@
 import { defineConfig, presetIcons, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from 'unocss'
+import theme from './src/unocss/theme'
 
 export default defineConfig({
   presets: [
@@ -10,6 +11,7 @@ export default defineConfig({
         sans: 'Inter',
       },
     }),
+    theme(),
   ],
   transformers: [
     transformerVariantGroup(),
@@ -23,7 +25,7 @@ export default defineConfig({
   shortcuts: [
     [
       /^divider-(x|y)$/,
-      ([,direction]) => `bg-zinc-200 rounded-0.5 ${direction === 'y' ? 'w-0.5 h-full' : 'h-0.5'}`,
+      ([,direction]) => `rounded-0.5 ${direction === 'y' ? 'w-0.5 h-full' : 'h-0.5'}`,
     ],
   ],
   autocomplete: {

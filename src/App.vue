@@ -3,7 +3,7 @@ import Editor from '@/editor/EditorContainer.vue'
 </script>
 
 <template>
-  <div class="h-full bg-slate-50">
+  <div class="h-full bg-color-base">
     <main class="h-full p-12">
       <Editor />
     </main>
@@ -18,5 +18,18 @@ import Editor from '@/editor/EditorContainer.vue'
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 </style>

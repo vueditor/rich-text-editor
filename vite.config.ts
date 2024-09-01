@@ -16,7 +16,7 @@ export default defineConfig({
       dirs: ['./src/composables', './src/utils'],
     }),
     Components({
-      dirs: ['./src/components'],
+      dirs: ['./src/components', './src/editor'],
       extensions: ['vue'],
       deep: true,
       directoryAsNamespace: false,
