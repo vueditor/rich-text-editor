@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <header class="bg-gray-100 px-16 py-2">
+  <header class="bg-gray-100 px-14 py-2">
     <EditorNodeSelect :editor="editor" />
   </header>
 </template>
