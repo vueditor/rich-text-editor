@@ -101,16 +101,6 @@ defineExpose({
         </div>
       </dd>
     </template>
-    <!-- fix load dynamic icon -->
-    <div class="hidden">
-      <div class="i-mdi:format-text" />
-      <div class="i-mdi:format-heading-1" />
-      <div class="i-mdi:format-heading-2" />
-      <div class="i-mdi:format-heading-3" />
-      <div class="i-mdi:format-list-bulleted" />
-      <div class="i-mdi:format-list-numbered" />
-      <div class="i-mdi:format-list-checkbox" />
-    </div>
   </dl>
 </template>
 

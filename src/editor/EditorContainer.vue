@@ -9,6 +9,7 @@ import placeholder from '@tiptap/extension-placeholder'
 import { symbol } from './extensions/symbol'
 import { EditorHandle } from './extensions/handle'
 import { slashMenu } from './extensions/slashMenu'
+import EditorHeader from './EditorHeader.vue'
 
 const editor = useEditor({
   extensions: [
@@ -43,16 +44,28 @@ const editor = useEditor({
 </script>
 
 <template>
-  <div class="editor-container">
+  <div class="editor-container border border-gray-100 rounded-2 border-solid bg-white focus-visible:drop-shadow hover:drop-shadow-sm">
+    <EditorHeader v-if="editor" :editor="editor" />
     <EditorContent :editor="editor" />
     <EditorHandle v-if="editor" :editor="editor" />
+
+    <!-- fix load dynamic icon -->
+    <div class="hidden">
+      <div class="i-mdi:format-text" />
+      <div class="i-mdi:format-heading-1" />
+      <div class="i-mdi:format-heading-2" />
+      <div class="i-mdi:format-heading-3" />
+      <div class="i-mdi:format-list-bulleted" />
+      <div class="i-mdi:format-list-numbered" />
+      <div class="i-mdi:format-list-checkbox" />
+    </div>
   </div>
 </template>
 
 <style lang="scss">
 .editor-container {
   .tiptap {
-    @apply bg-white px-16 py-4 focus-visible:outline-none border border-solid border-gray-100 rounded-2 hover:drop-shadow-sm focus-visible:!drop-shadow;
+    @apply px-16 py-4 focus-visible:!outline-none;
 
     .ProseMirror-selectednode {
       @apply bg-blue-100/50;

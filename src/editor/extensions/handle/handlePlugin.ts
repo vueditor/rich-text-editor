@@ -102,8 +102,7 @@ export class HandleView {
       middleware: [offset(8)],
     }).then(({ x, y }) => {
       Object.assign(this.handleElement.style, {
-        left: `${x}px`,
-        top: `${y}px`,
+        transform: `translateX(${x}px) translateY(${y}px)`,
       })
     })
   }
@@ -116,7 +115,7 @@ export class HandleView {
     }
     else if (!this.getTargetPos() && !!this.handleElement) {
       Object.assign(this.handleElement.style, {
-        top: '-128px',
+        transform: 'translateY(-64px)',
       })
     }
   }

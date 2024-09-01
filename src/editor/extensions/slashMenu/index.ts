@@ -25,7 +25,7 @@ interface SlashMenuOptions {
   suggestion: Partial<SuggestionOptions<SlashMenuItem, { items: SlashMenuItem[], command: SlashMenuCommand }>>
 }
 
-const slashMenuItems: SlashMenuItem[] = [
+export const slashMenuItems: SlashMenuItem[] = [
   {
     label: 'Text',
     desc: 'Start typing with plain text.',

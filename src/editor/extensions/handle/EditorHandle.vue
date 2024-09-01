@@ -53,7 +53,7 @@ function triggerSlashMenu(e: MouseEvent) {
 </script>
 
 <template>
-  <div id="editor-handle" ref="handleRef" class="fixed flex items-center transition-top transition-duration-300">
+  <div id="editor-handle" ref="handleRef" class="fixed left-0 top-0 flex items-center transition-transform transition-duration-300">
     <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:(bg-slate-100 ring-1 ring-gray-200)" @click="triggerSlashMenu">
       <div class="i-ic:round-plus h-1em w-1em" />
     </div>
