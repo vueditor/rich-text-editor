@@ -6,6 +6,7 @@ import taskItem from '@tiptap/extension-task-item'
 import placeholder from '@tiptap/extension-placeholder'
 
 // custom extensions
+import { heading } from './extensions/heading'
 import { symbol } from './extensions/symbol'
 import { EditorHandle } from './extensions/handle'
 import { slashMenu } from './extensions/slashMenu'
@@ -14,9 +15,7 @@ import EditorHeader from './EditorHeader.vue'
 const editor = useEditor({
   extensions: [
     starterKit.configure({
-      heading: {
-        levels: [1, 2, 3, 4],
-      },
+      heading: false,
     }),
     taskList,
     taskItem,
@@ -24,7 +23,7 @@ const editor = useEditor({
       placeholder: ({ node }) => {
         switch (node.type.name) {
           case 'heading': {
-            return `Heading ${node.attrs.level - 1}`
+            return `Heading ${node.attrs.level}`
           }
           case 'bulletList':
           case 'orderedList':
@@ -36,6 +35,7 @@ const editor = useEditor({
         return 'Write something, or "/" for commands'
       },
     }),
+    heading,
     symbol,
     slashMenu,
   ],
