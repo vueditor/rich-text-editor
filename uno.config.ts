@@ -30,7 +30,7 @@ export default defineConfig({
   ],
   autocomplete: {
     templates: [
-      'rotate-x-<deg>',
+      'rotate-x-180',
       'divider-(x|y)',
     ],
   },
