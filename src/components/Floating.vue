@@ -67,7 +67,14 @@ if (mode.value === 'hover') {
 }
 
 function onClickReference() {
-  if (mode.value === 'click') {
+  if (mode.value !== 'click') {
+    return
+  }
+
+  if (visible.value) {
+    close()
+  }
+  else {
     open()
   }
 }
@@ -82,6 +89,7 @@ if (mode.value === 'click') {
 defineExpose({
   open,
   close,
+  visible,
 })
 </script>
 
@@ -89,8 +97,8 @@ defineExpose({
   <div ref="referenceRef" class="inline-block" :class="{ 'cursor-not-allowed': disabled }" @click="onClickReference">
     <slot />
     <Teleport to="body">
-      <Transition>
-        <div v-show="visibleDebounced" ref="floatingRef" class="border border-stone-100 rounded border-solid bg-white p-2 shadow-md transition-transform" :style="{ ...floatingStyles, zIndex }">
+      <Transition name="fade">
+        <div v-show="visibleDebounced" ref="floatingRef" class="border border-stone-100 rounded-2 border-solid bg-white p-2 shadow-md transition-transform" :style="{ ...floatingStyles, zIndex }">
           <slot name="floating" />
         </div>
       </Transition>

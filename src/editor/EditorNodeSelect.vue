@@ -49,12 +49,20 @@ function onClickItem(item: SlashMenuItem) {
 
 <template>
   <Floating ref="floatingRef" mode="click" placement="bottom-start" :disabled="disabled">
-    <div class="btn-sm text-white btn !bg-blue-500" :class="{ 'btn-disabled': disabled }" :title="activatedItem?.desc">
-      {{ activatedItem?.label }}
+    <div class="flex cursor-pointer items-center gap-1 rounded-2 px-2 py-1 text-sm text-blue-500 font-600 transition-colors hover:bg-zinc-200" :class="{ 'cursor-not-allowed': disabled }" :title="activatedItem?.desc">
+      <span> {{ activatedItem?.label }}</span>
+      <div class="text-xl transition-transform transition-duration-300" :class="{ 'rotate-x-180': !!floatingRef?.visible }">
+        <div class="i-iconamoon:arrow-down-2 h-1em w-1em" />
+      </div>
     </div>
     <template #floating>
       <ul class="my-0 list-none p-0">
-        <li v-for="item in slashMenuItems" :key="item.label" class="flex items-center gap-1 btn-sm btn" :title="item.desc" @click="onClickItem(item)">
+        <li
+          v-for="item in slashMenuItems" :key="item.label" class="flex cursor-pointer items-center gap-1 rounded-2 px-2 py-1 transition-colors hover:bg-zinc-100"
+          :class="{ 'text-blue-500': item.label === activatedItem?.label }"
+          :title="item.desc"
+          @click="onClickItem(item)"
+        >
           <div class="rounded p-1 text-xs shadow">
             <div :class="item.icon" />
           </div>

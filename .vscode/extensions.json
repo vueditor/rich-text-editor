@@ -2,6 +2,7 @@
   "recommendations": [
     "Vue.volar",
     "antfu.unocss",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "antfu.iconify"
   ]
 }
