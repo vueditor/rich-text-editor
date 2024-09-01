@@ -2,11 +2,10 @@
   "type": "doc",
   "content": [
     {
-      "type": "heading",
+      "type": "title",
       "attrs": {
-        "name": "heading",
-        "id": "8Rua137n7uCyV4Kkcfpus",
-        "level": 1
+        "name": "title",
+        "id": "kUpVlSlLzIRMAQplHUrAp"
       },
       "content": [
         {
@@ -19,8 +18,8 @@
       "type": "heading",
       "attrs": {
         "name": "heading",
-        "id": "VST6oRWDuGvvIzcA6yVvu",
-        "level": 2
+        "id": "boe_HNXnxE9svh_MZSZsS",
+        "level": 1
       },
       "content": [
         {
@@ -46,13 +45,13 @@
       "type": "heading",
       "attrs": {
         "name": "heading",
-        "id": "DnUMiiSteEndjxmOtfqcB",
-        "level": 2
+        "id": "bkdElYWuzntc6q-tuQkgc",
+        "level": 1
       },
       "content": [
         {
           "type": "text",
-          "text": "Features"
+          "text": "Features  "
         }
       ]
     },
@@ -60,13 +59,13 @@
       "type": "heading",
       "attrs": {
         "name": "heading",
-        "id": "eI4PgstgwwIC-dIX76DUO",
-        "level": 3
+        "id": "6oQKogvyM3Ws95ayzxGCA",
+        "level": 2
       },
       "content": [
         {
           "type": "text",
-          "text": "Slash Menu"
+          "text": "Slash Menu "
         }
       ]
     },
@@ -87,13 +86,13 @@
       "type": "heading",
       "attrs": {
         "name": "heading",
-        "id": "jmnRV00abOr0Mqnu0AMH1",
-        "level": 3
+        "id": "1naqRFEl9gDh6S7DesllE",
+        "level": 2
       },
       "content": [
         {
           "type": "text",
-          "text": "Handle"
+          "text": "Handle "
         }
       ]
     },
@@ -159,13 +158,13 @@
       "type": "heading",
       "attrs": {
         "name": "heading",
-        "id": "-JrLKI094ml7tvxNDlJOT",
-        "level": 3
+        "id": "9mFQZ6RXOTkG1IH4HP5cs",
+        "level": 2
       },
       "content": [
         {
           "type": "text",
-          "text": "Symbol"
+          "text": "Symbol "
         }
       ]
     },

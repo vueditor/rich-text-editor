@@ -6,18 +6,21 @@ import taskItem from '@tiptap/extension-task-item'
 import placeholder from '@tiptap/extension-placeholder'
 
 // custom extensions
+import { document } from './extensions/document'
+import { title } from './extensions/title'
 import { heading } from './extensions/heading'
 import { symbol } from './extensions/symbol'
 import { EditorHandle } from './extensions/handle'
 import { slashMenu } from './extensions/slashMenu'
 import EditorHeader from './EditorHeader.vue'
 
-import content from './template/intro.json'
+import content from './templates/intro.json'
 
 const editor = useEditor({
   content,
   extensions: [
     starterKit.configure({
+      document: false,
       heading: false,
     }),
     taskList,
@@ -38,6 +41,8 @@ const editor = useEditor({
         return 'Write something, or "/" for commands'
       },
     }),
+    document,
+    title,
     heading,
     symbol,
     slashMenu,
