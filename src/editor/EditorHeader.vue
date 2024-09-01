@@ -54,6 +54,8 @@ const downloadOptions: DropdownOption[] = [
       <EditorNodeSelect :editor="editor" />
     </div>
     <div class="flex items-center">
+      <EditorCount v-if="editor" :editor="editor" />
+      <div class="mx-2 divider-y h-6 bg-zinc-300 dark:bg-zinc-500" />
       <EditorToggle :editor="editor" />
       <div class="mx-2 divider-y h-6 bg-zinc-300 dark:bg-zinc-500" />
       <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" @click="importContent">

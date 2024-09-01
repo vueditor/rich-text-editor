@@ -4,6 +4,7 @@ import starterKit from '@tiptap/starter-kit'
 import taskList from '@tiptap/extension-task-list'
 import taskItem from '@tiptap/extension-task-item'
 import placeholder from '@tiptap/extension-placeholder'
+import characterCount from '@tiptap/extension-character-count'
 
 // custom extensions
 import { document } from './extensions/document'
@@ -39,6 +40,7 @@ const editor = useEditor({
         return 'Write something, or "/" for commands'
       },
     }),
+    characterCount,
     document,
     title,
     heading,
