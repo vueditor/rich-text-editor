@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Editor, Range } from '@tiptap/core'
+import type { Editor, Range } from '@tiptap/vue-3'
 import type { SlashMenuItem } from './extensions/slashMenu'
 import { slashMenuItems } from './extensions/slashMenu'
 import Floating from '@/components/Floating.vue'

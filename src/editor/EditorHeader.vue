@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Editor } from '@tiptap/core'
+import type { Editor } from '@tiptap/vue-3'
 import { destr } from 'destr'
 import type { DropdownOption } from '../components/Dropdown.vue'
 import { downloadHTML } from '../utils/download'
@@ -54,6 +54,8 @@ const downloadOptions: DropdownOption[] = [
       <EditorNodeSelect :editor="editor" />
     </div>
     <div class="flex items-center">
+      <EditorToggle :editor="editor" />
+      <div class="mx-2 divider-y h-6 bg-zinc-300 dark:bg-zinc-500" />
       <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" @click="importContent">
         <div class="i-ic:round-upload h-1em w-1em" />
       </div>

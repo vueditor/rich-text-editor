@@ -14,6 +14,7 @@ declare module 'vue' {
     EditorNodeSelect: typeof import('./src/editor/EditorNodeSelect.vue')['default']
     EditorSlashMenu: typeof import('./src/editor/extensions/slashMenu/EditorSlashMenu.vue')['default']
     EditorTheme: typeof import('./src/editor/EditorTheme.vue')['default']
+    EditorToggle: typeof import('./src/editor/EditorToggle.vue')['default']
     Floating: typeof import('./src/components/Floating.vue')['default']
   }
 }
