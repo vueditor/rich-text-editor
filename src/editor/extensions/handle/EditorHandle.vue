@@ -39,7 +39,7 @@ function triggerSlashMenu(e: MouseEvent) {
   }
 
   if (node.textContent) {
-    props.editor!.chain().setNodeSelection(pos).createParagraphNear().insertContent('/').run()
+    props.editor!.chain().setNodeSelection(pos).createParagraphNear().insertContent('/').focus().run()
     return
   }
 
@@ -48,7 +48,7 @@ function triggerSlashMenu(e: MouseEvent) {
     return
   }
 
-  props.editor!.chain().setNodeSelection(pos).insertContent('/').run()
+  props.editor!.chain().focus(pos).insertContent('/').run()
 }
 </script>
 
