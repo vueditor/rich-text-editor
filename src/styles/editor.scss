@@ -1,0 +1,45 @@
+.tiptap {
+  @apply px-16 py-4 focus-visible:!outline-none;
+
+  .ProseMirror-selectednode {
+    @apply bg-blue-100/50;
+  }
+
+  [data-name='title'] {
+    @apply text-4xl font-700 mt-0 mb-6;
+  }
+
+  h2[data-name='heading'] {
+    @apply text-3xl font-700 mt-6 mb-4;
+  }
+  h3[data-name='heading'] {
+    @apply text-2xl font-600 mt-4 mb-2;
+  }
+  h4[data-name='heading'] {
+    @apply text-xl font-600 mt-4 mb-2;
+  }
+
+  [data-name='paragraph'] {
+    @apply my-0;
+  }
+
+  ol ol {
+    @apply list-roman;
+
+    & ol {
+      @apply list-alpha;
+    }
+  }
+
+  [data-checked] {
+    @apply flex items-center gap-1;
+
+    &[data-checked='true'] {
+      @apply line-through;
+    }
+  }
+
+  [data-placeholder]::before {
+    @apply content-[attr(data-placeholder)] text-gray-300 float-left h-0 pointer-events-none;
+  }
+}

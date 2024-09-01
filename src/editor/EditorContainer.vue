@@ -71,37 +71,5 @@ const editor = useEditor({
 </template>
 
 <style lang="scss">
-.editor-container {
-  .tiptap {
-    @apply px-16 py-4 focus-visible:!outline-none;
-
-    .ProseMirror-selectednode {
-      @apply bg-blue-100/50;
-    }
-
-    [data-placeholder]::before {
-      @apply content-[attr(data-placeholder)] text-gray-300 float-left h-0 pointer-events-none;
-    }
-
-    [data-name='paragraph'] {
-      @apply my-0;
-    }
-
-    ol ol {
-      @apply list-roman;
-
-      & ol {
-        @apply list-alpha;
-      }
-    }
-
-    [data-checked] {
-      @apply flex items-center gap-1;
-
-      &[data-checked='true'] {
-        @apply line-through;
-      }
-    }
-  }
-}
+@import url('@/styles/editor.scss');
 </style>
