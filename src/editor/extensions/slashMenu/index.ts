@@ -96,17 +96,24 @@ export const slashMenu = Extension.create<SlashMenuOptions>({
         command({ editor, range, props }) {
           props.command(editor, range)
         },
-        allow: ({ editor }) => editor.isFocused,
         render() {
           let component: VueRenderer | null
 
+          const destroy = () => {
+            component?.element?.remove()
+            component?.destroy()
+            component = null
+          }
           const updatePosition = (props: SuggestionProps) => {
             if (component) {
               component.updateProps(props)
             }
             else {
               component = new VueRenderer(EditorSlashMenu, {
-                props,
+                props: {
+                  ...props,
+                  destroy,
+                },
                 editor: props.editor,
               })
               document.body.appendChild(component.element!)
@@ -134,11 +141,6 @@ export const slashMenu = Extension.create<SlashMenuOptions>({
 
               })
             })
-          }
-          const destroy = () => {
-            component?.element?.remove()
-            component?.destroy()
-            component = null
           }
 
           return {

@@ -5,7 +5,9 @@ import type { SlashMenuCommand, SlashMenuItem } from './index'
 import { SLASH_MENU_ITEM_GROUP } from './index'
 import { KEYBOARD_EVENT_KEYS } from '@/editor/utils/constants'
 
-const props = defineProps<SuggestionProps<SlashMenuItem, { items: SlashMenuItem[], command: SlashMenuCommand }>>()
+const props = defineProps<SuggestionProps<SlashMenuItem, { items: SlashMenuItem[], command: SlashMenuCommand }> & {
+  destroy: () => void
+}>()
 
 interface ItemsGroup {
   label: string
@@ -70,6 +72,12 @@ function onKeyDown({ event }: SuggestionKeyDownProps) {
 function onMouseenter(index: number) {
   currentIndex.value = index
 }
+
+onClickOutside(menuRef, () => {
+  props.destroy()
+}, {
+  ignore: [props.editor.view.dom],
+})
 
 defineExpose({
   onKeyDown,
