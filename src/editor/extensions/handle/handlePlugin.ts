@@ -149,6 +149,10 @@ export function handlePlugin(options: HandlePluginOptions) {
     props: {
       handleDOMEvents: {
         mouseover(view, e) {
+          if (!view.editable) {
+            return
+          }
+
           onMouseoverDebounce(view, e)
         },
         mouseleave(view, e) {
