@@ -68,6 +68,11 @@ const downloadOptions: DropdownOption[] = [
       </Dropdown>
       <div class="mx-2 divider-y h-6 bg-zinc-300 dark:bg-zinc-500" />
       <EditorTheme />
+      <a href="https://github.com/vueditor/rich-text-editor.git" target="_blank">
+        <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft text-color-base" title="Github">
+          <div class="i-mdi:github h-1em w-1em" />
+        </div>
+      </a>
     </div>
   </header>
 </template>
