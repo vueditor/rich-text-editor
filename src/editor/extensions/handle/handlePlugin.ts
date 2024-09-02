@@ -3,6 +3,7 @@ import type { EditorView } from '@tiptap/pm/view'
 import { debounce } from 'lodash-es'
 import { computePosition, offset } from '@floating-ui/dom'
 import { isMacOS } from '@tiptap/core'
+import { META_KEYS, UI_EVENTS } from '@/editor/utils/constants'
 
 interface HandleState {
   pos: number
@@ -136,8 +137,19 @@ export function handlePlugin(options: HandlePluginOptions) {
       },
       apply(tr, value) {
         const newState = tr.getMeta(handlePluginKey)
-        if (!newState) {
+        const isDrop = tr.getMeta(META_KEYS.UI_EVENT)
+
+        if (!newState && isDrop !== UI_EVENTS.DROP) {
           return value
+        }
+
+        if (isDrop) {
+          const nodeSelection = tr.selection as NodeSelection
+
+          return {
+            ...value,
+            pos: nodeSelection.anchor + 1,
+          }
         }
 
         return {
@@ -159,7 +171,6 @@ export function handlePlugin(options: HandlePluginOptions) {
           onMouseleaveDebounce(view, e)
         },
       },
-
     },
     view(view) {
       return new HandleView({

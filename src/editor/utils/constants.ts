@@ -15,3 +15,11 @@ export const KEYBOARD_EVENT_KEYS = {
   ARROW_DOWN: 'ArrowDown',
   ENTER: 'Enter',
 }
+
+export const META_KEYS = {
+  UI_EVENT: 'uiEvent',
+}
+
+export const UI_EVENTS = {
+  DROP: 'drop',
+}
