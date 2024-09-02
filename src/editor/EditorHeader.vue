@@ -58,11 +58,11 @@ const downloadOptions: DropdownOption[] = [
       <div class="mx-2 divider-y h-6 bg-zinc-300 dark:bg-zinc-500" />
       <EditorToggle :editor="editor" />
       <div class="mx-2 divider-y h-6 bg-zinc-300 dark:bg-zinc-500" />
-      <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" @click="importContent">
+      <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" title="Upload" @click="importContent">
         <div class="i-ic:round-upload h-1em w-1em" />
       </div>
       <Dropdown :options="downloadOptions">
-        <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft">
+        <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" title="Download">
           <div class="i-ic:round-download h-1em w-1em" />
         </div>
       </Dropdown>

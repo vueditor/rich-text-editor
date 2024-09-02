@@ -34,7 +34,7 @@ async function toToggleDark({ clientX: x, clientY: y }: MouseEvent) {
 </script>
 
 <template>
-  <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" @click="toToggleDark">
+  <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" title="Toggle theme" @click="toToggleDark">
     <Transition name="slide-up" mode="out-in">
       <div v-if="isDark" class="i-ph:moon h-1em w-1em" />
       <div v-else class="i-ph:sun h-1em w-1em" />

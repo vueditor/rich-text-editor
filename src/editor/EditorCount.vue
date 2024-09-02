@@ -10,7 +10,7 @@ let count = 0
 const countRef = ref<HTMLDivElement>()
 function updateCount() {
   setTimeout(() => {
-    count = props.editor?.storage.characterCount.words()
+    count = props.editor?.storage.characterCount.characters()
 
     gsap.to(countRef.value!, {
       duration: 1,
@@ -28,7 +28,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="flex items-center gap-1 text-sm">
+  <div class="flex items-center gap-1 text-sm" title="Characters count">
     <div class="text-base">
       <div class="i-mdi:fountain-pen-tip h-1em w-1em" />
     </div>

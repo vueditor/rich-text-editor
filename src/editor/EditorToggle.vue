@@ -15,7 +15,7 @@ function toggleEditorStatus() {
 </script>
 
 <template>
-  <div class="flex cursor-pointer items-center gap-1 rounded-2 px-2 py-1 text-sm font-600 transition-colors hover:bg-color-hover-soft" @click="toggleEditorStatus">
+  <div class="flex cursor-pointer items-center gap-1 rounded-2 px-2 py-1 text-sm font-600 transition-colors hover:bg-color-hover-soft" title="Edit status" @click="toggleEditorStatus">
     <div class="size-3 rounded-full" :class="[isEditable ? 'bg-green-500' : 'bg-gray-500']" />
     <span>{{ text }}</span>
   </div>
