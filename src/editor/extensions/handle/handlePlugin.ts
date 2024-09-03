@@ -6,7 +6,16 @@ import { isMacOS } from '@tiptap/core'
 import { META_KEYS, UI_EVENTS } from '@/editor/utils/constants'
 
 interface HandleState {
-  pos: number
+  // editor left & right x pos
+  minX: number
+  maxX: number
+
+  // mouse coordinate
+  x: number | null
+  y: number | null
+
+  // pos for current target node
+  pos: number | null
 }
 
 interface HandlePluginOptions {
@@ -15,31 +24,35 @@ interface HandlePluginOptions {
 
 export const handlePluginKey = new PluginKey<HandleState>('handle')
 
-const onMouseoverDebounce = debounce((view: EditorView, e: MouseEvent) => {
-  const targetPos = view.posAtDOM(e.target as HTMLElement, 0)
-  if (!targetPos) {
-    return
-  }
-
-  const newPos = view.state.doc.resolve(targetPos).start(1)
+const onMouseenterDebounce = debounce((view: EditorView) => {
+  const editorDom = view.dom
+  const { x, width } = editorDom.getBoundingClientRect()
   view.dispatch(view.state.tr.setMeta(handlePluginKey, {
-    pos: newPos,
+    minX: x,
+    maxX: x + width,
+    pos: null,
   }))
-}, 100)
+}, 10)
+const onMousemoveDebounce = debounce((view: EditorView, e: MouseEvent) => {
+  view.dispatch(view.state.tr.setMeta(handlePluginKey, {
+    x: e.clientX,
+    y: e.clientY,
+    pos: null,
+  }))
+}, 10)
 const onMouseleaveDebounce = debounce((view: EditorView, e: MouseEvent) => {
-  const editorHandle = document.getElementById('editor-handle')
-  if (editorHandle?.contains(e.relatedTarget as HTMLElement)) {
-    const tr = view.state.tr
-    tr.deleteSelection()
-    view.state.applyTransaction(tr)
-
+  const toDom = e.relatedTarget as HTMLElement
+  const handleDom = document.getElementById('editor-handle')
+  if (handleDom?.isEqualNode(toDom) || handleDom?.contains(toDom)) {
     return
   }
 
   view.dispatch(view.state.tr.setMeta(handlePluginKey, {
-    pos: 0,
+    x: null,
+    y: null,
+    pos: null,
   }))
-}, 50)
+}, 10)
 
 interface HandleViewOptions {
   editorView: EditorView
@@ -84,7 +97,42 @@ export class HandleView {
   }
 
   getTargetPos() {
-    return (this.handlePluginKey.getState(this.editorView.state)?.pos ?? null) as number | null
+    const state = this.handlePluginKey.getState(this.editorView.state) as HandleState | undefined
+    if (!state) {
+      return null
+    }
+
+    if (state?.pos) {
+      const { node } = this.editorView.domAtPos(state.pos)
+      const { x, y } = (node as HTMLElement).getBoundingClientRect()
+
+      this.editorView.dispatch(this.editorView.state.tr.setMeta(handlePluginKey, {
+        x,
+        y,
+        pos: null,
+      }))
+
+      return state.pos
+    }
+
+    const { x, y, minX, maxX } = state
+    const left = Math.min(Math.max(x!, minX), maxX)
+    const top = y
+    if (Number.isNaN(left) || Number.isNaN(top)) {
+      return null
+    }
+
+    const posInfo = this.editorView.posAtCoords({
+      left,
+      top: top!,
+    })
+    if (!posInfo) {
+      return null
+    }
+
+    const { pos } = posInfo
+
+    return this.editorView.state.doc.resolve(pos).start(1)
   }
 
   getTargetDom() {
@@ -114,9 +162,17 @@ export class HandleView {
     if (targetDom) {
       this.updatePosition(targetDom as HTMLElement)
     }
-    else if (!this.getTargetPos() && !!this.handleElement) {
+    else if (this.handleElement) {
+      let transform = this.handleElement.style.transform
+      if (transform) {
+        transform = transform.replace(/translateY\(.+\)/, 'translateY(-128px)')
+      }
+      else {
+        transform = 'translateY(-128px)'
+      }
+
       Object.assign(this.handleElement.style, {
-        transform: 'translateY(-128px)',
+        transform,
       })
     }
   }
@@ -127,45 +183,38 @@ export class HandleView {
 }
 
 export function handlePlugin(options: HandlePluginOptions) {
-  const plugin = new Plugin({
+  const plugin = new Plugin<HandleState>({
     key: handlePluginKey,
     state: {
       init() {
         return {
-          pos: 0,
+          minX: 0,
+          maxX: Number.MAX_SAFE_INTEGER,
+          x: null,
+          y: null,
+          pos: null,
         }
       },
       apply(tr, value) {
-        const newState = tr.getMeta(handlePluginKey)
-        const isDrop = tr.getMeta(META_KEYS.UI_EVENT)
-
-        if (!newState && isDrop !== UI_EVENTS.DROP) {
-          return value
-        }
+        const newState = Object.assign({}, value, tr.getMeta(handlePluginKey))
+        const isDrop = tr.getMeta(META_KEYS.UI_EVENT) === UI_EVENTS.DROP
 
         if (isDrop) {
           const nodeSelection = tr.selection as NodeSelection
-
-          return {
-            ...value,
-            pos: nodeSelection.anchor + 1,
-          }
+          newState.pos = nodeSelection.anchor + 1
         }
 
-        return {
-          ...value,
-          ...newState,
-        }
+        return newState
       },
     },
     props: {
       handleDOMEvents: {
-        mouseover(view, e) {
-          if (!view.editable) {
-            return
-          }
+        mouseenter(view) {
+          onMouseenterDebounce(view)
+        },
 
-          onMouseoverDebounce(view, e)
+        mousemove(view, e) {
+          onMousemoveDebounce(view, e)
         },
         mouseleave(view, e) {
           onMouseleaveDebounce(view, e)

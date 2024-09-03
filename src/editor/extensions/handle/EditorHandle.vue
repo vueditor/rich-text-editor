@@ -53,12 +53,14 @@ function triggerSlashMenu(e: MouseEvent) {
 </script>
 
 <template>
-  <div id="editor-handle" ref="handleRef" class="fixed left-0 top-0 flex items-center transition-transform transition-duration-300">
-    <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:bg-color-hover-strong" @click="triggerSlashMenu">
-      <div class="i-ic:round-plus h-1em w-1em" />
+  <Teleport to="body">
+    <div id="editor-handle" ref="handleRef" class="fixed left-0 top-0 flex items-center transition-transform transition-duration-300 ease-in-out -translate-y-32">
+      <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:bg-color-hover-strong" @click="triggerSlashMenu">
+        <div class="i-ic:round-plus h-1em w-1em" />
+      </div>
+      <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:hover:bg-color-hover-strong" draggable="true">
+        <div class="i-icon-park-outline:drag h-1em w-1em" />
+      </div>
     </div>
-    <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:hover:bg-color-hover-strong" draggable="true">
-      <div class="i-icon-park-outline:drag h-1em w-1em" />
-    </div>
-  </div>
+  </Teleport>
 </template>
