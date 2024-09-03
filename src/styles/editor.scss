@@ -42,4 +42,17 @@
   [data-placeholder]::before {
     @apply content-[attr(data-placeholder)] text-neutral-300 dark:text-neutral-600 float-left h-0 pointer-events-none;
   }
+
+  // marks
+  [data-name='bold'] {
+    @apply font-600 text-color-strong;
+  }
+
+  [data-name='code'] {
+    @apply px-1 py-0.5 rounded-1 mx-1 bg-color-soft;
+  }
+
+  [data-name='italic'] {
+    @apply italic mx-1;
+  }
 }

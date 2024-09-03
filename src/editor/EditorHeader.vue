@@ -3,6 +3,7 @@ import type { Editor } from '@tiptap/vue-3'
 import { destr } from 'destr'
 import type { DropdownOption } from '../components/Dropdown.vue'
 import { downloadHTML } from '../utils/download'
+import EditorBasicMarks from './EditorBasicMarks.vue'
 
 const props = defineProps<{
   editor: Editor
@@ -52,6 +53,8 @@ const downloadOptions: DropdownOption[] = [
   <header class="flex items-center justify-between px-14 py-2 bg-color-soft text-color-base">
     <div class="flex">
       <EditorNodeSelect :editor="editor" />
+      <div class="mx-2 divider-y h-6 bg-zinc-300 dark:bg-zinc-500" />
+      <EditorBasicMarks :editor="editor" />
     </div>
     <div class="flex items-center">
       <EditorCount v-if="editor" :editor="editor" />

@@ -1,0 +1,71 @@
+<script lang="ts" setup>
+import type { Editor } from '@tiptap/core'
+
+const props = defineProps<{
+  editor: Editor
+}>()
+
+const marks = [
+  {
+    label: 'Bold',
+    icon: 'i-mdi:format-bold',
+    isActivated: () => props.editor.isActive('bold'),
+    toggle: () => props.editor.chain().focus().setBold().run(),
+  },
+  {
+    label: 'Code',
+    icon: 'i-mdi:code',
+    isActivated: () => props.editor.isActive('code'),
+    toggle: () => props.editor.chain().focus().setCode().run(),
+  },
+  {
+    label: 'Italic',
+    icon: 'i-mdi:format-italic ',
+    isActivated: () => props.editor.isActive('italic'),
+    toggle: () => props.editor.chain().focus().setItalic().run(),
+  },
+  {
+    label: 'Strike',
+    icon: 'i-mdi:format-strikethrough-variant ',
+    isActivated: () => props.editor.isActive('strike'),
+    toggle: () => props.editor.chain().focus().setStrike().run(),
+  },
+  {
+    label: 'Underline',
+    icon: 'i-mdi:format-underline ',
+    isActivated: () => props.editor.isActive('underline'),
+    toggle: () => props.editor.chain().focus().setUnderline().run(),
+  },
+  {
+    label: 'Superscript',
+    icon: 'i-mdi:format-superscript ',
+    isActivated: () => props.editor.isActive('superscript'),
+    toggle: () => props.editor.chain().focus().setSuperscript().run(),
+  },
+  {
+    label: 'Subscript',
+    icon: 'i-mdi:format-subscript ',
+    isActivated: () => props.editor.isActive('subscript'),
+    toggle: () => props.editor.chain().focus().setSubscript().run(),
+  },
+]
+</script>
+
+<template>
+  <div class="flex items-center gap-1">
+    <div
+      v-for="item in marks"
+      :key="item.label"
+      class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft"
+      :class="{ '!bg-color-primary text-neutral-200 ': item.isActivated() }"
+      :title="item.label"
+      @click="item.toggle"
+    >
+      <div class="h-1em w-1em" :class="item.icon" />
+    </div>
+  </div>
+</template>
+
+<style>
+
+</style>

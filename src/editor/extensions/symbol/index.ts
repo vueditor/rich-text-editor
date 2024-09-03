@@ -3,13 +3,14 @@ import { Extension, combineTransactionSteps, findChildrenInRange, getChangedRang
 import { nanoid } from 'nanoid'
 import type { Transaction } from '@tiptap/pm/state'
 import { Plugin, PluginKey } from '@tiptap/pm/state'
-import { isBlockNodeExtension } from '@/editor/utils/judge'
+import { isBlockNodeExtension, isMarkExtension } from '@/editor/utils/judge'
 
 export const symbol = Extension.create({
   name: 'symbol',
   addGlobalAttributes() {
     return [
       ...genBlockNodesGlobalAttributes(this.extensions as Extension[]),
+      ...genMarkGlobalAttributes(this.extensions as Extension[]),
     ]
   },
   onCreate() {
@@ -86,6 +87,25 @@ function genBlockNodesGlobalAttributes(extensions: Extension[]) {
         },
         parseHTML(element) {
           return element.getAttribute('data-id')
+        },
+      },
+    },
+  })) as GlobalAttributes
+}
+
+function genMarkGlobalAttributes(extensions: Extension[]) {
+  return extensions.filter(ext => isMarkExtension(ext)).map(ext => ({
+    types: [ext.name],
+    attributes: {
+      name: {
+        default: ext.name,
+        renderHTML(attributes) {
+          return {
+            'data-name': attributes.name,
+          }
+        },
+        parseHTML(element) {
+          return element.getAttribute('data-name')
         },
       },
     },

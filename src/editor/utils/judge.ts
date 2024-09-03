@@ -7,3 +7,5 @@ export const isNodeExtension = (ext: Extension) => ext.type === EXTENSION_TYPE.N
 export const isBlockNodeExtension = (ext: Extension) => isNodeExtension(ext) && ((ext as Node).config.group as string)?.includes(NODE_GROUP.BLOCK)
 
 export const isBlockNode = (node: ProseMirrorNode) => node.type.spec.group?.includes(NODE_GROUP.BLOCK)
+
+export const isMarkExtension = (ext: Extension) => ext.type === EXTENSION_TYPE.MARK

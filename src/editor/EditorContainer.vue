@@ -3,6 +3,7 @@ import { EditorContent, useEditor } from '@tiptap/vue-3'
 import starterKit from '@tiptap/starter-kit'
 import taskList from '@tiptap/extension-task-list'
 import taskItem from '@tiptap/extension-task-item'
+import underline from '@tiptap/extension-underline'
 import placeholder from '@tiptap/extension-placeholder'
 import characterCount from '@tiptap/extension-character-count'
 
@@ -10,6 +11,8 @@ import characterCount from '@tiptap/extension-character-count'
 import { document } from './extensions/document'
 import { title } from './extensions/title'
 import { heading } from './extensions/heading'
+import { superscript } from './extensions/superscript'
+import { subscript } from './extensions/subscript'
 import { symbol } from './extensions/symbol'
 import { slashMenu } from './extensions/slashMenu'
 
@@ -24,6 +27,9 @@ const editor = useEditor({
     }),
     taskList,
     taskItem,
+    underline,
+    superscript,
+    subscript,
     placeholder.configure({
       placeholder: ({ node }) => {
         switch (node.type.name) {
