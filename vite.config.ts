@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import UnoCSS from 'unocss/vite'
+import { analyzer } from 'vite-bundle-analyzer'
 
 export default defineConfig({
   plugins: [
@@ -28,10 +29,29 @@ export default defineConfig({
       directoryAsNamespace: false,
     }),
     UnoCSS(),
+    analyzer({
+      analyzerMode: 'static',
+    }),
   ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vueuse': ['@vueuse/core'],
+          'gsap': ['gsap'],
+          'fflate': ['fflate'],
+          'floating-ui': ['@floating-ui/dom'],
+          'prosemirror-model': ['@tiptap/pm/model'],
+          'prosemirror-transform': ['@tiptap/pm/transform'],
+          'prosemirror-view': ['@tiptap/pm/view'],
+          'tiptap': ['@tiptap/vue-3'],
+        },
+      },
     },
   },
 })

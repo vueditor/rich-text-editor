@@ -123,6 +123,9 @@ importers:
       vite:
         specifier: ^5.4.1
         version: 5.4.2(@types/node@20.16.1)(sass@1.77.8)
+      vite-bundle-analyzer:
+        specifier: ^0.10.6
+        version: 0.10.6
       vite-plugin-vue-devtools:
         specifier: ^7.3.9
         version: 7.3.9(rollup@4.21.1)(vite@5.4.2(@types/node@20.16.1)(sass@1.77.8))(vue@3.4.38(typescript@5.5.4))
@@ -2932,6 +2935,9 @@ packages:
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
+
+  vite-bundle-analyzer@0.10.6:
+    resolution: {integrity: sha512-w/5wvRZeZo2lKdJzRGCTn4YW/mT++fKeii2PQPK3odblfFqsODYHF72V+QTg1Xznbxy543N0WfT5vPiSosVWxA==}
 
   vite-hot-client@0.2.3:
     resolution: {integrity: sha512-rOGAV7rUlUHX89fP2p2v0A2WWvV3QMX2UYq0fRqsWSvFvev4atHWqjwGoKaZT1VTKyLGk533ecu3eyd0o59CAg==}
@@ -6103,6 +6109,8 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
+
+  vite-bundle-analyzer@0.10.6: {}
 
   vite-hot-client@0.2.3(vite@5.4.2(@types/node@20.16.1)(sass@1.77.8)):
     dependencies:
