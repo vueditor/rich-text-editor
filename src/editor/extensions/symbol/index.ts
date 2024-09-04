@@ -40,6 +40,8 @@ export const symbol = Extension.create({
             const nodeIds = new Set<string>()
 
             newNodes.forEach(({ node, pos }) => {
+              tr.setNodeAttribute(pos, 'name', node.type.spec.attrs?.name?.default)
+
               if (!node.attrs.id) {
                 tr.setNodeAttribute(pos, 'id', nanoid())
                 return
