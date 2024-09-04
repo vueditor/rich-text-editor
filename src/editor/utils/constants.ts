@@ -7,6 +7,7 @@ export const NODE_GROUP = {
   BLOCK: 'block',
   INLINE: 'inline',
   LIST: 'list',
+  TITLE: 'title',
 }
 
 export const KEYBOARD_EVENT_KEYS = {
