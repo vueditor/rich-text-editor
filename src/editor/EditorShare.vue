@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Editor } from '@tiptap/vue-3'
+import type { HashRecord } from './extensions/hashRecord'
 
 const props = defineProps<{
   editor: Editor

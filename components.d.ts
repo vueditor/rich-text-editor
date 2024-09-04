@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     Dropdown: typeof import('./src/components/Dropdown.vue')['default']
     EditorBasicMarks: typeof import('./src/editor/EditorBasicMarks.vue')['default']
-    EditorCharCount: typeof import('./src/editor/EditorCount.vue')['default']
     EditorContainer: typeof import('./src/editor/EditorContainer.vue')['default']
     EditorCount: typeof import('./src/editor/EditorCount.vue')['default']
     EditorHandle: typeof import('./src/editor/extensions/handle/EditorHandle.vue')['default']

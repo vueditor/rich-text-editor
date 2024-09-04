@@ -1,7 +1,7 @@
 import type { JSONContent } from '@tiptap/vue-3'
 import { Extension } from '@tiptap/vue-3'
 
-interface HashRecord {
+export interface HashRecord {
   doc: JSONContent
 }
 
