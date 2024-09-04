@@ -11,7 +11,13 @@ export default defineConfig({
     VueDevTools(),
     vue(),
     AutoImport({
-      imports: ['vue', '@vueuse/core'],
+      imports: [
+        'vue',
+        '@vueuse/core',
+        {
+          destr: ['destr'],
+        },
+      ],
       dts: true,
       dirs: ['./src/composables', './src/utils'],
     }),

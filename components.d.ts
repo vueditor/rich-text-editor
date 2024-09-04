@@ -15,6 +15,7 @@ declare module 'vue' {
     EditorHandle: typeof import('./src/editor/extensions/handle/EditorHandle.vue')['default']
     EditorHeader: typeof import('./src/editor/EditorHeader.vue')['default']
     EditorNodeSelect: typeof import('./src/editor/EditorNodeSelect.vue')['default']
+    EditorShare: typeof import('./src/editor/EditorShare.vue')['default']
     EditorSlashMenu: typeof import('./src/editor/extensions/slashMenu/EditorSlashMenu.vue')['default']
     EditorTheme: typeof import('./src/editor/EditorTheme.vue')['default']
     EditorToggle: typeof import('./src/editor/EditorToggle.vue')['default']

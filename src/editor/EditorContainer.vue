@@ -15,6 +15,7 @@ import { superscript } from './extensions/superscript'
 import { subscript } from './extensions/subscript'
 import { symbol } from './extensions/symbol'
 import { slashMenu } from './extensions/slashMenu'
+import { hashRecord } from './extensions/hashRecord'
 
 import content from './templates/intro.json'
 
@@ -52,13 +53,16 @@ const editor = useEditor({
     heading,
     symbol,
     slashMenu,
+    hashRecord,
   ],
   autofocus: 'start',
 })
 </script>
 
 <template>
-  <div class="editor-container overflow-hidden border rounded-2 border-solid border-color-base bg-color-strong focus-visible:drop-shadow hover:drop-shadow-sm">
+  <div
+    class="editor-container overflow-hidden border rounded-2 border-solid border-color-base bg-color-strong focus-visible:drop-shadow hover:drop-shadow-sm"
+  >
     <EditorHeader v-if="editor" :editor="editor" />
     <EditorContent :editor="editor" />
     <EditorHandle v-if="editor" :editor="editor" />

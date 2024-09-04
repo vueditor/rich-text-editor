@@ -7,7 +7,9 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
+  const atou: typeof import('./src/utils/compress')['atou']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
+  const compressStr: typeof import('./src/utils/compress')['compressStr']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
   const computedEager: typeof import('@vueuse/core')['computedEager']
@@ -29,6 +31,7 @@ declare global {
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
+  const destr: typeof import('destr')['destr']
   const downloadHTML: typeof import('./src/utils/download')['downloadHTML']
   const downloadJSON: typeof import('./src/utils/download')['downloadJSON']
   const downloadTXT: typeof import('./src/utils/download')['downloadTXT']
@@ -104,9 +107,11 @@ declare global {
   const tryOnMounted: typeof import('@vueuse/core')['tryOnMounted']
   const tryOnScopeDispose: typeof import('@vueuse/core')['tryOnScopeDispose']
   const tryOnUnmounted: typeof import('@vueuse/core')['tryOnUnmounted']
+  const uncompressStr: typeof import('./src/utils/compress')['uncompressStr']
   const unref: typeof import('vue')['unref']
   const unrefElement: typeof import('@vueuse/core')['unrefElement']
   const until: typeof import('@vueuse/core')['until']
+  const unzipStr: typeof import('./src/utils/compress')['unzipStr']
   const uploadFile: typeof import('./src/utils/upload')['uploadFile']
   const useActiveElement: typeof import('@vueuse/core')['useActiveElement']
   const useAnimate: typeof import('@vueuse/core')['useAnimate']
@@ -267,6 +272,7 @@ declare global {
   const useWindowScroll: typeof import('@vueuse/core')['useWindowScroll']
   const useWindowSize: typeof import('@vueuse/core')['useWindowSize']
   const useZIndex: typeof import('./src/composables/zIndex')['useZIndex']
+  const utoa: typeof import('./src/utils/compress')['utoa']
   const watch: typeof import('vue')['watch']
   const watchArray: typeof import('@vueuse/core')['watchArray']
   const watchAtMost: typeof import('@vueuse/core')['watchAtMost']
@@ -283,6 +289,7 @@ declare global {
   const watchTriggerable: typeof import('@vueuse/core')['watchTriggerable']
   const watchWithFilter: typeof import('@vueuse/core')['watchWithFilter']
   const whenever: typeof import('@vueuse/core')['whenever']
+  const zipStr: typeof import('./src/utils/compress')['zipStr']
 }
 // for type re-export
 declare global {
