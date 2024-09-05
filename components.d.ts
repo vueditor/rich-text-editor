@@ -11,13 +11,16 @@ declare module 'vue' {
     EditorBasicMarks: typeof import('./src/editor/EditorBasicMarks.vue')['default']
     EditorContainer: typeof import('./src/editor/EditorContainer.vue')['default']
     EditorCount: typeof import('./src/editor/EditorCount.vue')['default']
+    EditorFloating: typeof import('./src/editor/EditorFloating.vue')['default']
     EditorHandle: typeof import('./src/editor/extensions/handle/EditorHandle.vue')['default']
     EditorHeader: typeof import('./src/editor/EditorHeader.vue')['default']
+    EditorLink: typeof import('./src/editor/extensions/link/EditorLink.vue')['default']
     EditorNodeSelect: typeof import('./src/editor/EditorNodeSelect.vue')['default']
     EditorShare: typeof import('./src/editor/EditorShare.vue')['default']
     EditorSlashMenu: typeof import('./src/editor/extensions/slashMenu/EditorSlashMenu.vue')['default']
     EditorTheme: typeof import('./src/editor/EditorTheme.vue')['default']
     EditorToggle: typeof import('./src/editor/EditorToggle.vue')['default']
     Floating: typeof import('./src/components/Floating.vue')['default']
+    Link: typeof import('./src/editor/extensions/link')['default']
   }
 }

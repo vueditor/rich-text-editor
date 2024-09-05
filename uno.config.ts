@@ -21,6 +21,13 @@ export default defineConfig({
     [/^rotate-x-(\d+)$/, ([,d]) => ({
       transform: `rotateX(${d}deg)`,
     })],
+    [
+      'word-break',
+      {
+        'word-break': 'normal',
+        'overflow-wrap': 'anywhere',
+      },
+    ],
   ],
   shortcuts: [
     [
@@ -31,6 +38,7 @@ export default defineConfig({
   autocomplete: {
     templates: [
       'rotate-x-180',
+      'word-break',
       'divider-(x|y)',
     ],
   },

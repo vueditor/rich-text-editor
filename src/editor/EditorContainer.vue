@@ -11,6 +11,7 @@ import characterCount from '@tiptap/extension-character-count'
 import { document } from './extensions/document'
 import { title } from './extensions/title'
 import { heading } from './extensions/heading'
+import { link } from './extensions/link'
 import { trailingNode } from './extensions/trailingNode'
 import { superscript } from './extensions/superscript'
 import { subscript } from './extensions/subscript'
@@ -52,6 +53,7 @@ const editor = useEditor({
     document,
     title,
     heading,
+    link,
     trailingNode,
     symbol,
     slashMenu,
