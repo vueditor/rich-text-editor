@@ -63,7 +63,7 @@ function unsetLink() {
             </button>
           </div>
         </div>
-        <div v-else class="h-8 flex items-center gap-2">
+        <div v-else class="h-8 flex items-center gap-1">
           <a class="inline-block max-w-80 cursor-pointer truncate rounded-1.5 px-2 py-0.5 text-sm text-blue-600 transition-colors hover:bg-color-hover-soft" :href="node.attrs.href" target="_blank">{{ node.textContent }}</a>
           <div title="Edit link" class="cursor-pointer rounded-2 p-1 text-base transition-colors hover:bg-color-hover-soft" @click="toEdit">
             <div class="i-mdi:edit-outline h-1em w-1em" />
