@@ -47,12 +47,12 @@ function unsetLink() {
       <template #floating>
         <div v-if="isEdit" class="w-100 p-2">
           <div>
-            <label class="block font-700">Text</label>
-            <input v-model="formData.text" class="mt-2 block w-full border border-stone-300 rounded-2 border-solid px-2 py-1 text-base outline-offset-4 focus:outline-2">
+            <label class="block text-neutral-900">Text</label>
+            <input v-model="formData.text" class="mt-2 block w-full border border-stone-300 rounded-1 border-solid px-2 py-1 text-sm outline-blue-500 outline-offset-4 focus:outline-2">
           </div>
           <div class="mt-4">
-            <label label class="block font-700">Href</label>
-            <input v-model="formData.href" class="mt-2 block w-full border border-stone-300 rounded-2 border-solid px-2 py-1 text-base outline-offset-4 focus:outline-2">
+            <label label class="block text-neutral-900">Href</label>
+            <input v-model="formData.href" class="mt-2 block w-full border border-stone-300 rounded-1 border-solid px-2 py-1 text-sm outline-blue-500 outline-offset-4 focus:outline-2">
           </div>
           <div class="mt-4 flex items-center justify-end gap-2">
             <button class="cursor-pointer rounded border-none bg-blue-600 px-2 py-0.5 text-sm text-white transition-colors hover:bg-blue-700" :disabled="!canUpdate" @click="updateLink">
