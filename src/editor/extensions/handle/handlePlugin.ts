@@ -97,6 +97,10 @@ export class HandleView {
   }
 
   getTargetPos() {
+    if (!this.editorView.editable) {
+      return
+    }
+
     const state = this.handlePluginKey.getState(this.editorView.state) as HandleState | undefined
     if (!state) {
       return null
