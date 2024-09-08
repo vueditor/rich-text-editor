@@ -32,7 +32,7 @@ const { nextZIndex } = useZIndex()
 const visible = ref(false)
 const visibleDebounced = refDebounced(visible, 300)
 function open() {
-  if (disabled.value) {
+  if (disabled.value || visible.value) {
     return
   }
 
@@ -53,7 +53,7 @@ watch(disabled, (disabled) => {
 const isReferenceHover = useElementHover(referenceRef)
 const isFloatingRefHover = useElementHover(floatingRef)
 const isHover = computed(() => isReferenceHover.value || isFloatingRefHover.value)
-watch(isHover, (isHover) => {
+watchDebounced(isHover, (isHover) => {
   if (isHover) {
     open()
   }
@@ -62,6 +62,7 @@ watch(isHover, (isHover) => {
   }
 }, {
   immediate: true,
+  debounce: 100,
 })
 
 onClickOutside(referenceRef, () => {
