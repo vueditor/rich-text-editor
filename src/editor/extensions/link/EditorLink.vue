@@ -28,6 +28,7 @@ const floatingRef = ref<InstanceType<typeof EditorFloating>>()
 const canUpdate = computed(() => !!formData.value.text.trim() && test(formData.value.href.trim()))
 function updateLink() {
   props.editor.commands.updateLink(props.getPos(), formData.value)
+  floatingRef.value?.close()
 }
 function cancelEdit() {
   floatingRef.value?.close()
@@ -55,7 +56,7 @@ function unsetLink() {
             <input v-model="formData.href" class="mt-2 block w-full border border-stone-300 rounded-1 border-solid px-2 py-1 text-sm outline-blue-500 outline-offset-4 focus:outline-2">
           </div>
           <div class="mt-4 flex items-center justify-end gap-2">
-            <button class="cursor-pointer rounded border-none bg-blue-600 px-2 py-0.5 text-sm text-white transition-colors hover:bg-blue-700" :disabled="!canUpdate" @click="updateLink">
+            <button class="cursor-pointer rounded border-none bg-blue-600 px-2 py-0.5 text-sm text-white transition-colors hover:bg-blue-700 !disabled:cursor-not-allowed !disabled:bg-blue-900" :disabled="!canUpdate" @click="updateLink">
               Update
             </button>
             <button class="cursor-pointer border border-stone-4 rounded border-solid bg-white px-2 py-0.5 text-sm transition-colors hover:bg-zinc-200" @click="cancelEdit">
