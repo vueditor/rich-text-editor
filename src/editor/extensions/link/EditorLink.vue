@@ -2,7 +2,7 @@
 import type { NodeViewProps } from '@tiptap/vue-3'
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-3'
 import { test } from 'linkifyjs'
-import EditorFloating from '@/editor/EditorFloating.vue'
+import type EditorFloating from '@/editor/EditorFloating.vue'
 
 const props = defineProps<NodeViewProps>()
 
@@ -39,7 +39,7 @@ function unsetLink() {
 </script>
 
 <template>
-  <NodeViewWrapper as="span">
+  <NodeViewWrapper as="div" class="ml-0.5 inline-block">
     <EditorFloating ref="floatingRef" mode="hover" :disabled="!editor.isEditable" @open="resetState">
       <NodeViewContent
         as="a" v-bind="node.attrs" target="_blank" class="text-blue-600 font-600 no-underline word-break hover:underline"

@@ -1,6 +1,7 @@
 import type { PasteRuleMatch } from '@tiptap/vue-3'
-import { Node, VueNodeViewRenderer, nodePasteRule } from '@tiptap/vue-3'
+import { Node, VueNodeViewRenderer, findParentNodeClosestToPos, nodePasteRule } from '@tiptap/vue-3'
 import { find, test } from 'linkifyjs'
+import { base } from 'w3c-keyname'
 import EditorLink from './EditorLink.vue'
 
 declare module '@tiptap/core' {
@@ -132,6 +133,52 @@ export const link = Node.create({
         },
       }),
     ]
+  },
+  onSelectionUpdate() {
+    const { state } = this.editor.view
+    const { selection } = state
+
+    // not in link / text selection / not at end
+    if (!this.editor.isActive(this.name) || !selection.empty) {
+      return
+    }
+
+    // at start
+    if (!selection.$to.nodeBefore) {
+      if (state.doc.nodeAt(selection.to - 1)?.type.name !== this.name) {
+        return this.editor.chain().focus(selection.to - 2).run()
+      }
+
+      return this.editor.chain().insertContentAt(selection.to - 1, ' ').run()
+    }
+
+    // at end
+    if (!selection.$to.nodeAfter) {
+      if (state.doc.nodeAt(selection.to + 1)) {
+        return this.editor.chain().focus(selection.to + 2).run()
+      }
+
+      return this.editor.chain().insertContentAt(selection.to + 1, ' ').run()
+    }
+
+    return false
+  },
+  addKeyboardShortcuts() {
+    return {
+      [base['37']]: ({ editor }) => {
+        const { state } = editor.view
+        const { selection, doc } = state
+
+        // const node = doc.nodeAt(selection.to)
+        // console.info(selection, node, findParentNodeClosestToPos(doc.resolve(selection.to - 2), () => true))
+        const { node } = findParentNodeClosestToPos(doc.resolve(selection.to - 2), () => true)!
+        if (node.type.name !== this.name) {
+          return false
+        }
+
+        return editor.commands.focus(selection.to - 3)
+      },
+    }
   },
   addNodeView() {
     return VueNodeViewRenderer(EditorLink)
