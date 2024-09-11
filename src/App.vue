@@ -4,7 +4,7 @@ import Editor from '@/editor/EditorContainer.vue'
 
 <template>
   <div class="h-full bg-color-base">
-    <main class="h-full p-12">
+    <main class="h-full overflow-auto p-12">
       <Editor />
     </main>
   </div>
