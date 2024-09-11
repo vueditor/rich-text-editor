@@ -28,6 +28,7 @@ const editor = useEditor({
     starterKit.configure({
       document: false,
       heading: false,
+      hardBreak: false,
     }),
     taskList,
     taskItem,
