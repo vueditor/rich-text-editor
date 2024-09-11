@@ -35,7 +35,7 @@
     @apply flex items-center gap-1;
 
     &[data-checked='true'] {
-      @apply line-through;
+      @apply line-through text-neutral-400 transition-colors;
     }
   }
 
@@ -54,5 +54,9 @@
 
   [data-name='italic'] {
     @apply italic mx-1;
+  }
+
+  [data-name='strike'] {
+    @apply text-neutral-400 transition-colors;
   }
 }
