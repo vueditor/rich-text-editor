@@ -44,6 +44,9 @@ importers:
       '@unocss/reset':
         specifier: ^0.62.3
         version: 0.62.3
+      '@vueditor/tiptap-extension-handle':
+        specifier: 0.1.0-beta.0
+        version: 0.1.0-beta.0(@tiptap/core@2.6.6(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
       '@vueuse/core':
         specifier: ^11.0.3
         version: 11.0.3(vue@3.5.1(typescript@5.5.4))
@@ -1363,6 +1366,12 @@ packages:
 
   '@vue/shared@3.5.1':
     resolution: {integrity: sha512-NdcTRoO4KuW2RSFgpE2c+E/R/ZHaRzWPxAGxhmxZaaqLh6nYCXx7lc9a88ioqOCxCaV2SFJmujkxbUScW7dNsQ==}
+
+  '@vueditor/tiptap-extension-handle@0.1.0-beta.0':
+    resolution: {integrity: sha512-So5vCMORSM3GN5xo0YxHSk1YGKFQyoD0o6uBkXqXWyeYX+Sxuo4Ui5GppbGwHA3yN8Weia0gmTYOQVCrDTuB0Q==}
+    peerDependencies:
+      '@tiptap/core': ^2.6.6
+      '@tiptap/pm': ^2.6.6
 
   '@vueuse/core@11.0.3':
     resolution: {integrity: sha512-RENlh64+SYA9XMExmmH1a3TPqeIuJBNNB/63GT35MZI+zpru3oMRUA6cEFr9HmGqEgUisurwGwnIieF6qu3aXw==}
@@ -4475,6 +4484,12 @@ snapshots:
   '@vue/shared@3.4.38': {}
 
   '@vue/shared@3.5.1': {}
+
+  '@vueditor/tiptap-extension-handle@0.1.0-beta.0(@tiptap/core@2.6.6(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)':
+    dependencies:
+      '@floating-ui/dom': 1.6.10
+      '@tiptap/core': 2.6.6(@tiptap/pm@2.6.6)
+      '@tiptap/pm': 2.6.6
 
   '@vueuse/core@11.0.3(vue@3.5.1(typescript@5.5.4))':
     dependencies:

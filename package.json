@@ -22,6 +22,7 @@
     "@tiptap/suggestion": "^2.6.6",
     "@tiptap/vue-3": "^2.6.6",
     "@unocss/reset": "^0.62.3",
+    "@vueditor/tiptap-extension-handle": "0.1.0-beta.0",
     "@vueuse/core": "^11.0.3",
     "destr": "^2.0.3",
     "fflate": "^0.8.2",

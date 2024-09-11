@@ -1,21 +1,9 @@
 <script lang="ts" setup>
 import { Editor } from '@tiptap/vue-3'
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { handlePlugin, handlePluginKey } from './handlePlugin'
 import { NODE_GROUP } from '@/editor/utils/constants'
 
 const props = defineProps({
   editor: Editor,
-})
-
-const handleRef = ref<HTMLDivElement>()
-onMounted(() => {
-  props.editor?.registerPlugin(handlePlugin({
-    element: handleRef.value!,
-  }))
-})
-onBeforeUnmount(() => {
-  props.editor?.unregisterPlugin(handlePluginKey)
 })
 
 function triggerSlashMenu(e: MouseEvent) {
@@ -54,11 +42,11 @@ function triggerSlashMenu(e: MouseEvent) {
 
 <template>
   <Teleport to="body">
-    <div id="editor-handle" ref="handleRef" class="fixed left-0 top-0 flex items-center transition-transform transition-duration-300 ease-in-out -translate-y-32">
+    <div id="vueditor-handle" class="fixed left-0 top-0 flex items-center transition-transform transition-duration-300 ease-in-out -translate-y-32">
       <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:bg-color-hover-strong" @click="triggerSlashMenu">
         <div class="i-ic:round-plus h-1em w-1em" />
       </div>
-      <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:hover:bg-color-hover-strong" draggable="true">
+      <div id="vueditor-handle-bar" class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:hover:bg-color-hover-strong" draggable="true">
         <div class="i-icon-park-outline:drag h-1em w-1em" />
       </div>
     </div>

@@ -12,7 +12,7 @@ declare module 'vue' {
     EditorContainer: typeof import('./src/editor/EditorContainer.vue')['default']
     EditorCount: typeof import('./src/editor/EditorCount.vue')['default']
     EditorFloating: typeof import('./src/editor/EditorFloating.vue')['default']
-    EditorHandle: typeof import('./src/editor/extensions/handle/EditorHandle.vue')['default']
+    EditorHandle: typeof import('./src/editor/EditorHandle.vue')['default']
     EditorHeader: typeof import('./src/editor/EditorHeader.vue')['default']
     EditorLink: typeof import('./src/editor/extensions/link/EditorLink.vue')['default']
     EditorNodeSelect: typeof import('./src/editor/EditorNodeSelect.vue')['default']

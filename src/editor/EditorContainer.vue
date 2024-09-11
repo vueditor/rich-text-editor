@@ -8,6 +8,7 @@ import placeholder from '@tiptap/extension-placeholder'
 import characterCount from '@tiptap/extension-character-count'
 
 // custom extensions
+import { handle } from '@vueditor/tiptap-extension-handle'
 import { document } from './extensions/document'
 import { title } from './extensions/title'
 import { heading } from './extensions/heading'
@@ -58,6 +59,7 @@ const editor = useEditor({
     symbol,
     slashMenu,
     hashRecord,
+    handle,
   ],
   autofocus: 'start',
 })
@@ -69,7 +71,7 @@ const editor = useEditor({
   >
     <EditorHeader v-if="editor" :editor="editor" />
     <EditorContent :editor="editor" />
-    <EditorHandle v-if="editor" :editor="editor" />
+    <EditorHandle :editor="editor" />
 
     <!-- fix load dynamic icon -->
     <div class="hidden">
