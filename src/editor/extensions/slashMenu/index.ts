@@ -4,11 +4,13 @@ import suggestion from '@tiptap/suggestion'
 import type { SuggestionOptions, SuggestionProps } from '@tiptap/suggestion'
 import { VueRenderer } from '@tiptap/vue-3'
 import { computePosition, flip, offset } from '@floating-ui/dom'
+import { test } from 'linkifyjs'
 import EditorSlashMenu from './EditorSlashMenu.vue'
 import { KEYBOARD_EVENT_KEYS } from '@/editor/utils/constants'
 
 export const SLASH_MENU_ITEM_GROUP = {
   0: 'Basic',
+  1: 'Media',
 }
 
 export interface SlashMenuItem {
@@ -79,6 +81,33 @@ export const slashMenuItems: SlashMenuItem[] = [
     command: (editor, range) => editor.chain().focus().deleteRange(range).toggleTaskList().run(),
     group: 0,
     relatedWords: ['task'],
+  },
+  {
+    label: 'To-do list',
+    desc: 'Create a to-do list.',
+    icon: 'i-mdi:format-list-checkbox ',
+    command: (editor, range) => editor.chain().focus().deleteRange(range).toggleTaskList().run(),
+    group: 0,
+    relatedWords: ['task'],
+  },
+  {
+    label: 'Image',
+    desc: 'Embed with a link',
+    icon: 'i-mdi:image-outline',
+    command: (editor, range) => {
+      const src = window.prompt('Please input image src', '')
+      if (src === null) {
+        return
+      }
+
+      if (!test(src, 'url')) {
+        alert('Invalid image src.')
+        return
+      }
+
+      editor.chain().focus().deleteRange(range).setImage({ src }).run()
+    },
+    group: 1,
   },
 ]
 

@@ -12,6 +12,7 @@ import { handle } from '@vueditor/tiptap-extension-handle'
 import { document } from './extensions/document'
 import { title } from './extensions/title'
 import { heading } from './extensions/heading'
+import { image } from './extensions/image'
 import { link } from './extensions/link'
 import { trailingNode } from './extensions/trailingNode'
 import { superscript } from './extensions/superscript'
@@ -55,6 +56,9 @@ const editor = useEditor({
     document,
     title,
     heading,
+    image.configure({
+      allowBase64: true,
+    }),
     link,
     trailingNode,
     symbol,

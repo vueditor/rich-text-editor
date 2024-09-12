@@ -86,7 +86,7 @@ defineExpose({
 
 <template>
   <dl ref="menuRef" class="fixed my-0 rounded-2 bg-gray-100 p-2 transition-transform shadow-surround dark:bg-gray-900 dark:shadow-stone-700">
-    <template v-for="group in itemsGroups" :key="group.label">
+    <div v-for="group in itemsGroups" :key="group.label" class="mb-4 last:mb-0">
       <dt class="mb-1 pl-2 text-xs">
         {{ group.label }}
       </dt>
@@ -108,7 +108,7 @@ defineExpose({
           </p>
         </div>
       </dd>
-    </template>
+    </div>
   </dl>
 </template>
 

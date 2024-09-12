@@ -12,6 +12,7 @@
   "dependencies": {
     "@floating-ui/vue": "^1.1.4",
     "@tiptap/extension-character-count": "^2.6.6",
+    "@tiptap/extension-image": "^2.6.6",
     "@tiptap/extension-placeholder": "^2.6.6",
     "@tiptap/extension-subscript": "^2.6.6",
     "@tiptap/extension-superscript": "^2.6.6",

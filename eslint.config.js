@@ -7,4 +7,7 @@ export default antfu({
     css: true,
   },
   ignores: ['pnpm-lock.yaml'],
+  rules: {
+    'no-alert': 0,
+  },
 })
