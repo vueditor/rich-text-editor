@@ -2,7 +2,7 @@
   @apply px-16 py-4 focus-visible:!outline-none;
 
   .ProseMirror-selectednode {
-    @apply bg-blue-100/50;
+    @apply bg-blue-100;
   }
 
   [data-name='title'] {
@@ -49,11 +49,11 @@
 
   // marks
   [data-name='bold'] {
-    @apply font-600 text-color-strong;
+    @apply font-700 text-black dark:text-white;
   }
 
   [data-name='code'] {
-    @apply px-1 py-0.5 rounded-1 mx-1 bg-color-soft;
+    @apply px-1 py-0.5 rounded-1 mx-1 bg-zinc-200 dark:bg-zinc-800;
   }
 
   [data-name='italic'] {

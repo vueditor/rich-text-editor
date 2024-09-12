@@ -85,14 +85,14 @@ defineExpose({
 </script>
 
 <template>
-  <dl ref="menuRef" class="fixed my-0 border rounded-2 border-solid p-2 shadow-lg border-color-base bg-color-base">
+  <dl ref="menuRef" class="fixed my-0 rounded-2 bg-gray-100 p-2 transition-transform shadow-surround dark:bg-gray-900 dark:shadow-stone-700">
     <template v-for="group in itemsGroups" :key="group.label">
       <dt class="mb-1 pl-2 text-xs">
         {{ group.label }}
       </dt>
       <dd
         v-for="item in group.items" :key="item.label" class="m-0 flex cursor-pointer items-center gap-4 rounded-1 px-2 py-1 transition-colors"
-        :class="{ 'bg-color-hover-soft': item.index === currentIndex }"
+        :class="{ 'bg-zinc-300 dark:bg-zinc-700': item.index === currentIndex }"
         @mouseenter="onMouseenter(item.index)"
         @click="selectItem(item.index)"
       >
@@ -103,7 +103,7 @@ defineExpose({
           <div class="text-sm">
             {{ item.label }}
           </div>
-          <p class="my-0 text-xs text-color-soft">
+          <p class="my-0 text-xs text-neutral-600 dark:text-neutral-400">
             {{ item.desc }}
           </p>
         </div>

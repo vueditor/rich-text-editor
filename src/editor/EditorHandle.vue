@@ -43,10 +43,10 @@ function triggerSlashMenu(e: MouseEvent) {
 <template>
   <Teleport to="body">
     <div id="vueditor-handle" class="fixed left-0 top-0 flex items-center transition-transform transition-duration-300 ease-in-out -translate-y-32">
-      <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:bg-color-hover-strong" @click="triggerSlashMenu">
+      <div class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:bg-zinc-300 dark:hover:bg-zinc-700" @click="triggerSlashMenu">
         <div class="i-ic:round-plus h-1em w-1em" />
       </div>
-      <div id="vueditor-handle-bar" class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:hover:bg-color-hover-strong" draggable="true">
+      <div id="vueditor-handle-bar" class="cursor-pointer rounded-1 p-1 text-base transition-colors hover:bg-zinc-300 dark:hover:bg-zinc-700" draggable="true">
         <div class="i-icon-park-outline:drag h-1em w-1em" />
       </div>
     </div>

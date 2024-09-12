@@ -1,5 +1,4 @@
 import { defineConfig, presetIcons, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from 'unocss'
-import theme from './src/unocss/theme'
 
 export default defineConfig({
   presets: [
@@ -11,7 +10,6 @@ export default defineConfig({
         sans: 'Inter',
       },
     }),
-    theme(),
   ],
   transformers: [
     transformerVariantGroup(),
@@ -28,6 +26,32 @@ export default defineConfig({
         'overflow-wrap': 'anywhere',
       },
     ],
+    [
+      'shadow-surround',
+      {
+        'box-shadow': '0 0 2px 2px rgb(0 0 0 /0.1)',
+      },
+    ],
+    [
+      /shadow-surround-(sm|md|lg)/,
+      ([,size]) => {
+        if (size === 'sm') {
+          return {
+            'box-shadow': '0 0 2px 1px rgb(0 0 0 /0.1)',
+          }
+        }
+        if (size === 'md') {
+          return {
+            'box-shadow': '0 0 4px 2px  rgb(0 0 0 /0.1)',
+          }
+        }
+        if (size === 'lg') {
+          return {
+            'box-shadow': '0 0 4px 4px rgb(0 0 0 /0.1)',
+          }
+        }
+      },
+    ],
   ],
   shortcuts: [
     [
@@ -40,6 +64,10 @@ export default defineConfig({
       'rotate-x-180',
       'word-break',
       'divider-(x|y)',
+      'border-surround-<size>',
     ],
+    shorthands: {
+      size: '(sm|md|lg)',
+    },
   },
 })

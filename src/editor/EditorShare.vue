@@ -21,7 +21,7 @@ function handleCopy() {
 </script>
 
 <template>
-  <div class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft" title="Toggle theme" @click="handleCopy">
+  <div class="cursor-pointer rounded p-1 transition-colors hover:bg-zinc-300 dark:hover:bg-zinc-700" title="Toggle theme" @click="handleCopy">
     <Transition name="slide-up" mode="out-in">
       <div v-if="copied" class="i-mdi:success-circle h-1em w-1em bg-green-500" />
       <div v-else class="i-mdi:share-outline h-1em w-1em" />

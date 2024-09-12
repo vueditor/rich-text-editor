@@ -56,8 +56,8 @@ const marks = [
     <div
       v-for="item in marks"
       :key="item.label"
-      class="cursor-pointer rounded p-1 transition-colors hover:bg-color-hover-soft"
-      :class="{ '!bg-color-primary text-neutral-200 ': item.isActivated() }"
+      class="cursor-pointer rounded p-1 transition-colors hover:bg-zinc-300 dark:hover:bg-zinc-700"
+      :class="{ 'bg-blue-600 text-white': item.isActivated() }"
       :title="item.label"
       @click="item.toggle"
     >

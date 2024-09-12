@@ -3,8 +3,8 @@ import Editor from '@/editor/EditorContainer.vue'
 </script>
 
 <template>
-  <div class="h-full bg-color-base">
-    <main class="h-full overflow-auto p-12">
+  <div class="h-full bg-gray-100 dark:bg-gray-900">
+    <main class="h-full">
       <Editor />
     </main>
   </div>

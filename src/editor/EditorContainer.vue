@@ -67,11 +67,9 @@ const editor = useEditor({
 </script>
 
 <template>
-  <div
-    class="editor-container overflow-hidden border rounded-2 border-solid border-color-base bg-color-strong focus-visible:drop-shadow hover:drop-shadow-sm"
-  >
+  <div class="h-full overflow-auto">
     <EditorHeader v-if="editor" :editor="editor" />
-    <EditorContent :editor="editor" />
+    <EditorContent :editor="editor" class="mt-12" />
     <EditorHandle :editor="editor" />
 
     <!-- fix load dynamic icon -->
