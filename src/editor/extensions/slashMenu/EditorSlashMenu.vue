@@ -49,15 +49,23 @@ function selectItem(index: number) {
   const item = items.find(_item => _item.index === index)
   item?.command(props.editor, props.range)
 }
+function scroll(index: number) {
+  menuRef.value?.querySelector(`#${CSS.escape(index.toString())}`)?.scrollIntoView({
+    behavior: 'smooth',
+  })
+}
 function onKeyDown({ event }: SuggestionKeyDownProps) {
   switch (event.key) {
     case KEYBOARD_EVENT_KEYS.ARROW_UP: {
+      menuRef.value!.blur()
       currentIndex.value = (currentIndex.value + props.items.length - 1) % props.items.length
+      scroll(currentIndex.value)
       return true
     }
     case KEYBOARD_EVENT_KEYS.ARROW_DOWN: {
       menuRef.value!.blur()
       currentIndex.value = (currentIndex.value + 1) % props.items.length
+      scroll(currentIndex.value)
       return true
     }
     case KEYBOARD_EVENT_KEYS.ENTER: {
@@ -85,13 +93,14 @@ defineExpose({
 </script>
 
 <template>
-  <dl ref="menuRef" class="fixed my-0 rounded-2 bg-gray-100 p-2 transition-transform shadow-surround dark:bg-gray-900 dark:shadow-stone-700">
+  <dl ref="menuRef" class="fixed my-0 max-h-80 overflow-auto rounded-2 bg-gray-100 p-2 transition-transform shadow-surround dark:bg-gray-900 dark:shadow-stone-700">
     <div v-for="group in itemsGroups" :key="group.label" class="mb-4 last:mb-0">
       <dt class="mb-1 pl-2 text-xs">
         {{ group.label }}
       </dt>
       <dd
-        v-for="item in group.items" :key="item.label" class="m-0 flex cursor-pointer items-center gap-4 rounded-1 px-2 py-1 transition-colors"
+        v-for="item in group.items" :id="item.index.toString()" :key="item.label"
+        class="m-0 flex cursor-pointer scroll-mt-1 items-center gap-4 rounded-1 px-2 py-1 transition-colors"
         :class="{ 'bg-zinc-300 dark:bg-zinc-700': item.index === currentIndex }"
         @mouseenter="onMouseenter(item.index)"
         @click="selectItem(item.index)"
