@@ -52,12 +52,14 @@ export const link = Node.create({
           return
         }
 
-        const { selection, tr } = state
+        const { selection, tr, doc } = state
         if (selection.empty) {
           return
         }
 
-        selection.replaceWith(tr, this.type.create())
+        const defaultText = doc.textBetween(selection.from, selection.to)
+
+        selection.replaceWith(tr, this.type.create(null, state.schema.text(defaultText)))
 
         return dispatch(tr)
       },

@@ -3,17 +3,19 @@ import type { Placement, Strategy } from '@floating-ui/vue'
 import { autoUpdate, flip, offset as offsetMiddleware, useFloating } from '@floating-ui/vue'
 
 const props = withDefaults(defineProps<{
+  modelValue?: boolean
   placement?: Placement
   strategy?: Strategy
   offset?: number
   disabled?: boolean
 }>(), {
+  modelValue: false,
   placement: 'top-end',
   strategy: 'fixed',
   offset: 4,
   disabled: false,
 })
-const emit = defineEmits(['open', 'close'])
+const emit = defineEmits(['update:modelValue', 'open', 'close'])
 
 const { placement, strategy, offset, disabled } = toRefs(props)
 
@@ -83,7 +85,7 @@ defineExpose({
     <slot />
     <Teleport to="body">
       <Transition name="fade">
-        <div v-show="visibleDebounced" ref="floatingRef" class="border rounded-2 border-solid px-2 py-1 shadow-md transition-transform border-color-base bg-color-strong" :style="{ ...floatingStyles, zIndex }">
+        <div v-show="modelValue || visibleDebounced" ref="floatingRef" class="border rounded-2 border-solid px-2 py-1 shadow-md transition-transform border-color-base bg-color-strong" :style="{ ...floatingStyles, zIndex }">
           <slot name="floating" />
         </div>
       </Transition>

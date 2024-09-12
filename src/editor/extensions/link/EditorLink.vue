@@ -6,26 +6,30 @@ import type EditorFloating from '@/editor/EditorFloating.vue'
 
 const props = defineProps<NodeViewProps>()
 
-const isEdit = ref(false)
-const formData = ref({
+const formData = ref<{
+  text?: string
+  href?: string
+}>({
   text: props.node.textContent,
   href: (props.node.attrs.href ?? '') as string,
 })
+const isEdit = ref(!formData.value.href)
 function resetState() {
-  isEdit.value = false
   formData.value = {
     text: props.node.textContent,
     href: props.node.attrs.href as string,
   }
+  isEdit.value = !formData.value.href
 }
-function toEdit(e: MouseEvent) {
-  e.preventDefault()
+function toEdit(e?: MouseEvent) {
+  e?.preventDefault()
   props.editor.commands.setNodeSelection(props.getPos())
   isEdit.value = true
 }
 
 const floatingRef = ref<InstanceType<typeof EditorFloating>>()
-const canUpdate = computed(() => !!formData.value.text.trim() && test(formData.value.href.trim()))
+
+const canUpdate = computed(() => !!formData.value.text && test(formData.value.href ?? ''))
 function updateLink() {
   props.editor.commands.updateLink(props.getPos(), formData.value)
   floatingRef.value?.close()
@@ -41,7 +45,7 @@ function unsetLink() {
 
 <template>
   <NodeViewWrapper as="div" class="ml-0.5 inline-block">
-    <EditorFloating ref="floatingRef" mode="hover" :disabled="!editor.isEditable" @open="resetState">
+    <EditorFloating ref="floatingRef" :model-value="!formData.href" mode="hover" :disabled="!editor.isEditable" @open="resetState">
       <NodeViewContent
         as="a" v-bind="node.attrs" target="_blank" class="text-blue-600 font-600 no-underline word-break hover:underline"
       />
