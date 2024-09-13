@@ -23,7 +23,7 @@ function replaceImage() {
 </script>
 
 <template>
-  <NodeViewWrapper>
+  <NodeViewWrapper class="my-4">
     <EditorFloating mode="hover" :disabled="!editor.isEditable">
       <img :src="node.attrs.src" class="object-scale-down" :alt="node.attrs.alt" :title="node.attrs.title">
       <template #floating>
