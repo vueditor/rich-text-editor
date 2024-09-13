@@ -73,7 +73,7 @@ const editor = useEditor({
 <template>
   <div class="h-full overflow-auto">
     <EditorHeader v-if="editor" :editor="editor" />
-    <EditorContent :editor="editor" class="mt-12" />
+    <EditorContent :editor="editor" class="mx-auto mt-12 max-w-5xl" />
     <EditorHandle :editor="editor" />
 
     <!-- fix load dynamic icon -->
