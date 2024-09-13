@@ -50,6 +50,9 @@ importers:
       '@vueditor/tiptap-extension-handle':
         specifier: 0.1.0-beta.0
         version: 0.1.0-beta.0(@tiptap/core@2.6.6(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
+      '@vueditor/tiptap-extension-symbol':
+        specifier: 0.1.0-beta.0
+        version: 0.1.0-beta.0(@tiptap/core@2.6.6(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)
       '@vueuse/core':
         specifier: ^11.0.3
         version: 11.0.3(vue@3.5.1(typescript@5.5.4))
@@ -1377,6 +1380,12 @@ packages:
 
   '@vueditor/tiptap-extension-handle@0.1.0-beta.0':
     resolution: {integrity: sha512-So5vCMORSM3GN5xo0YxHSk1YGKFQyoD0o6uBkXqXWyeYX+Sxuo4Ui5GppbGwHA3yN8Weia0gmTYOQVCrDTuB0Q==}
+    peerDependencies:
+      '@tiptap/core': ^2.6.6
+      '@tiptap/pm': ^2.6.6
+
+  '@vueditor/tiptap-extension-symbol@0.1.0-beta.0':
+    resolution: {integrity: sha512-15Ea5zXdEHKtT2NL+xtSNX/DtbkqsG6jo4zxJsaNKa2CXS6/RD1dJCDnjVdXgTZVRm8Jak1LFKfJwKWYenvzBQ==}
     peerDependencies:
       '@tiptap/core': ^2.6.6
       '@tiptap/pm': ^2.6.6
@@ -4502,6 +4511,12 @@ snapshots:
       '@floating-ui/dom': 1.6.10
       '@tiptap/core': 2.6.6(@tiptap/pm@2.6.6)
       '@tiptap/pm': 2.6.6
+
+  '@vueditor/tiptap-extension-symbol@0.1.0-beta.0(@tiptap/core@2.6.6(@tiptap/pm@2.6.6))(@tiptap/pm@2.6.6)':
+    dependencies:
+      '@tiptap/core': 2.6.6(@tiptap/pm@2.6.6)
+      '@tiptap/pm': 2.6.6
+      nanoid: 5.0.7
 
   '@vueuse/core@11.0.3(vue@3.5.1(typescript@5.5.4))':
     dependencies:

@@ -9,6 +9,7 @@ import characterCount from '@tiptap/extension-character-count'
 
 // custom extensions
 import { handle } from '@vueditor/tiptap-extension-handle'
+import { symbol } from '@vueditor/tiptap-extension-symbol'
 import { document } from './extensions/document'
 import { title } from './extensions/title'
 import { heading } from './extensions/heading'
@@ -17,7 +18,6 @@ import { link } from './extensions/link'
 import { trailingNode } from './extensions/trailingNode'
 import { superscript } from './extensions/superscript'
 import { subscript } from './extensions/subscript'
-import { symbol } from './extensions/symbol'
 import { slashMenu } from './extensions/slashMenu'
 import { hashRecord } from './extensions/hashRecord'
 
