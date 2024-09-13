@@ -85,7 +85,7 @@ defineExpose({
     <slot />
     <Teleport to="body">
       <Transition name="fade">
-        <div v-show="modelValue || visibleDebounced" ref="floatingRef" class="rounded-2 bg-gray-100 p-2 transition-transform shadow-surround dark:bg-gray-900 dark:shadow-stone-700" :style="{ ...floatingStyles, zIndex }">
+        <div v-show="modelValue || visibleDebounced" ref="floatingRef" class="border border-stone-300 rounded-2 border-solid bg-gray-100 p-2 transition-transform shadow-surround-sm dark:border-stone-700 dark:bg-gray-900" :style="{ ...floatingStyles, zIndex }">
           <slot name="floating" />
         </div>
       </Transition>

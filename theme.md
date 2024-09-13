@@ -5,3 +5,4 @@
 - text -> neutral indigo
 - bg -> gray
 - hover:bg -> zinc
+- border -> stone
