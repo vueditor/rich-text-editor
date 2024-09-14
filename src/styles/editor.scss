@@ -24,7 +24,7 @@
   }
 
   [data-name='blockquote'] {
-    @apply m-0 pl-2 relative before:(content-[''] absolute left-0 top-0 bottom-0 w-1 rounded bg-gray-300 dark:bg-gray-600);
+    @apply m-0 pl-2 relative after:(content-[''] absolute left-0 top-0 bottom-0 w-1 rounded bg-gray-300 dark:bg-gray-600);
   }
 
   ol ol {
