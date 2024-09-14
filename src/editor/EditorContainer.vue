@@ -13,6 +13,7 @@ import { symbol } from '@vueditor/tiptap-extension-symbol'
 import { document } from './extensions/document'
 import { title } from './extensions/title'
 import { heading } from './extensions/heading'
+import { codeBlock } from './extensions/codeBlock'
 import { image } from './extensions/image'
 import { link } from './extensions/link'
 import { trailingNode } from './extensions/trailingNode'
@@ -30,6 +31,7 @@ const editor = useEditor({
       document: false,
       heading: false,
       hardBreak: false,
+      codeBlock: false,
     }),
     taskList,
     taskItem,
@@ -56,6 +58,7 @@ const editor = useEditor({
     document,
     title,
     heading,
+    codeBlock,
     image.configure({
       allowBase64: true,
     }),

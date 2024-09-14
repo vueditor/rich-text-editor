@@ -10,6 +10,7 @@ declare module 'vue' {
     Dropdown: typeof import('./src/components/Dropdown.vue')['default']
     EditorBasicMarks: typeof import('./src/editor/EditorBasicMarks.vue')['default']
     EditorBasicNodes: typeof import('./src/editor/EditorBasicNodes.vue')['default']
+    EditorCodeBlock: typeof import('./src/editor/extensions/codeBlock/EditorCodeBlock.vue')['default']
     EditorContainer: typeof import('./src/editor/EditorContainer.vue')['default']
     EditorCount: typeof import('./src/editor/EditorCount.vue')['default']
     EditorFloating: typeof import('./src/editor/EditorFloating.vue')['default']

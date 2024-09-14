@@ -8,6 +8,7 @@ export default defineConfig({
       provider: 'google',
       fonts: {
         sans: 'Inter',
+        mono: 'Ubuntu Mono',
       },
     }),
   ],
