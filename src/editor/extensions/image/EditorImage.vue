@@ -2,6 +2,7 @@
 import type { NodeViewProps } from '@tiptap/vue-3'
 import { NodeViewWrapper } from '@tiptap/vue-3'
 import { test } from 'linkifyjs'
+import EditorFloating from '../../EditorFloating.vue'
 
 const props = defineProps<NodeViewProps>()
 const { editor, node } = toRefs(props)
@@ -20,12 +21,52 @@ function replaceImage() {
     src,
   })
 }
+
+const imageRef = ref<InstanceType<typeof EditorFloating>>()
+// @ts-expect-error imageRef
+const { width } = useElementSize(imageRef)
+
+const resizing = ref(false)
+let initX = 0
+let initWidth = 0
+let direction = 'left' as 'left' | 'right'
+function onMouseDown(e: MouseEvent, _direction: 'left' | 'right') {
+  initX = e.clientX
+  initWidth = imageRef.value!.$el.clientWidth
+  direction = _direction
+  resizing.value = true
+}
+useEventListener(document, 'mousemove', (e: MouseEvent) => {
+  if (!resizing.value)
+    return
+
+  if (direction === 'right') {
+    imageRef.value!.$el.style.width = `${initWidth + e.clientX - initX}px`
+  }
+  else {
+    imageRef.value!.$el.style.width = `${initWidth + initX - e.clientX}px`
+  }
+})
+useEventListener(document, 'mouseup', () => {
+  resizing.value = false
+  props.updateAttributes({
+    width: width.value,
+  })
+})
 </script>
 
 <template>
   <NodeViewWrapper class="my-4">
-    <EditorFloating mode="hover" :disabled="!editor.isEditable">
-      <img :src="node.attrs.src" class="object-scale-down" :alt="node.attrs.alt" :title="node.attrs.title">
+    <EditorFloating ref="imageRef" mode="hover" :disabled="!editor.isEditable" class="max-w-full" :style="{ width: `${node.attrs.width}px` }">
+      <div class="relative">
+        <img :src="node.attrs.src" class="pointer-events-none object-scale-down" :alt="node.attrs.alt" :title="node.attrs.title">
+        <div class="absolute bottom-0 top-0 contents h-full" @mousedown="(e) => onMouseDown(e, 'left')">
+          <div class="absolute left-1 top-1/2 h-12 max-h-1/2 w-2 cursor-ew-resize rounded bg-gray-400 shadow-surround-sm -translate-y-1/2 dark:bg-gray-600" />
+        </div>
+        <div class="absolute bottom-0 top-0 contents h-full" @mousedown="(e) => onMouseDown(e, 'right')">
+          <div class="absolute right-1 top-1/2 h-12 max-h-1/2 w-2 cursor-ew-resize rounded bg-gray-400 shadow-surround-sm -translate-y-1/2 dark:bg-gray-600" />
+        </div>
+      </div>
       <template #floating>
         <div
           class="h-8 flex items-center gap-1"
