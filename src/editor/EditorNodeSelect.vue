@@ -14,13 +14,13 @@ const disabled = computed(() => !editor.value.view.editable)
 const findItemByLabel = (label: string) => slashMenuItems.find(item => item.label === label)
 const activatedItem = computed(() => {
   if (editor.value.isActive('heading', { level: 2 })) {
-    return findItemByLabel('Heading 1')
-  }
-  if (editor.value.isActive('heading', { level: 3 })) {
     return findItemByLabel('Heading 2')
   }
-  if (editor.value.isActive('heading', { level: 4 })) {
+  if (editor.value.isActive('heading', { level: 3 })) {
     return findItemByLabel('Heading 3')
+  }
+  if (editor.value.isActive('heading', { level: 4 })) {
+    return findItemByLabel('Heading 4')
   }
   if (editor.value.isActive('bulletList')) {
     return findItemByLabel('Bulleted list')

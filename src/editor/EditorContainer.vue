@@ -12,7 +12,6 @@ import { handle } from '@vueditor/tiptap-extension-handle'
 import { symbol } from '@vueditor/tiptap-extension-symbol'
 import { document } from './extensions/document'
 import { title } from './extensions/title'
-import { heading } from './extensions/heading'
 import { codeBlock } from './extensions/codeBlock'
 import { image } from './extensions/image'
 import { link } from './extensions/link'
@@ -29,7 +28,9 @@ const editor = useEditor({
   extensions: [
     starterKit.configure({
       document: false,
-      heading: false,
+      heading: {
+        levels: [2, 3, 4, 5, 6],
+      },
       hardBreak: false,
       codeBlock: false,
     }),
@@ -58,7 +59,6 @@ const editor = useEditor({
     characterCount,
     document,
     title,
-    heading,
     codeBlock,
     image.configure({
       allowBase64: true,
@@ -83,9 +83,9 @@ const editor = useEditor({
     <!-- fix load dynamic icon -->
     <div class="hidden">
       <div class="i-mdi:format-text" />
-      <div class="i-mdi:format-heading-1" />
       <div class="i-mdi:format-heading-2" />
       <div class="i-mdi:format-heading-3" />
+      <div class="i-mdi:format-heading-4" />
       <div class="i-mdi:format-list-bulleted" />
       <div class="i-mdi:format-list-numbered" />
       <div class="i-mdi:format-list-checkbox" />

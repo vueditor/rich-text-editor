@@ -37,16 +37,8 @@ export const slashMenuItems: SlashMenuItem[] = [
     relatedWords: ['paragraph'],
   },
   {
-    label: 'Heading 1',
-    desc: 'Big section heading.',
-    icon: 'i-mdi:format-heading-1',
-    command: (editor, range) => editor.chain().focus().deleteRange(range).setHeading({ level: 1 }).run(),
-    group: 0,
-    relatedWords: ['h1'],
-  },
-  {
     label: 'Heading 2',
-    desc: 'Medium section heading.',
+    desc: 'Big section heading.',
     icon: 'i-mdi:format-heading-2',
     command: (editor, range) => editor.chain().focus().deleteRange(range).setHeading({ level: 2 }).run(),
     group: 0,
@@ -54,11 +46,19 @@ export const slashMenuItems: SlashMenuItem[] = [
   },
   {
     label: 'Heading 3',
-    desc: 'Small section heading.',
+    desc: 'Medium section heading.',
     icon: 'i-mdi:format-heading-3',
     command: (editor, range) => editor.chain().focus().deleteRange(range).setHeading({ level: 3 }).run(),
     group: 0,
     relatedWords: ['h3'],
+  },
+  {
+    label: 'Heading 4',
+    desc: 'Small section heading.',
+    icon: 'i-mdi:format-heading-4',
+    command: (editor, range) => editor.chain().focus().deleteRange(range).setHeading({ level: 4 }).run(),
+    group: 0,
+    relatedWords: ['h4'],
   },
   {
     label: 'Bulleted list',
