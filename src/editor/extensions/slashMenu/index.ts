@@ -119,6 +119,9 @@ export const slashMenu = Extension.create<SlashMenuOptions>({
     return {
       suggestion: {
         char: '/',
+        allow({ editor }) {
+          return !editor.isActive('codeBlock')
+        },
         items({ query }) {
           return slashMenuItems.filter(item => isStringContains(item.label, query) || item.relatedWords?.find(word => isStringContains(word, query)))
         },
