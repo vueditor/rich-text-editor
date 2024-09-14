@@ -46,7 +46,8 @@ const editor = useEditor({
           }
           case 'bulletList':
           case 'orderedList':
-          case 'taskList': {
+          case 'taskList':
+          case 'codeBlock': {
             return ''
           }
         }
