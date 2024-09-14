@@ -10,7 +10,7 @@ const languageClass = `${extension.value.options?.languageClassPrefix}${node.val
 
 <template>
   <NodeViewWrapper as="pre" class="rounded p-2 focus-visible:!outline-none">
-    <NodeViewContent as="code" :class="languageClass" class="font-mono" />
+    <NodeViewContent as="code" :class="languageClass" class="block font-mono" />
   </NodeViewWrapper>
 </template>
 
