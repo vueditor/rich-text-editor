@@ -1,9 +1,18 @@
 import type { JSONContent } from '@tiptap/vue-3'
+import type { Editor } from '@tiptap/core'
 import { Extension } from '@tiptap/vue-3'
 
 export interface HashRecord {
   doc: JSONContent
 }
+
+const updateHash = useDebounceFn((editor: Editor) => {
+  const record: HashRecord = {
+    doc: editor.getJSON(),
+  }
+
+  location.hash = `#${zipStr(JSON.stringify(record))}`
+}, 100)
 
 export const hashRecord = Extension.create({
   name: 'hashRecord',
@@ -22,12 +31,7 @@ export const hashRecord = Extension.create({
 
     this.editor.chain().setContent(doc).run()
   },
-  onBlur() {
-    const doc = this.editor.getJSON()
-    const record: HashRecord = {
-      doc,
-    }
-
-    location.hash = `#${zipStr(JSON.stringify(record))}`
+  onUpdate() {
+    updateHash(this.editor)
   },
 })
