@@ -16,7 +16,7 @@ const language = computed({
     })
   },
 })
-const languageClass = `${extension.value.options?.languageClassPrefix}${language.value}`
+const languageClass = computed(() => `${extension.value.options?.languageClassPrefix}${language.value}`)
 
 const { languages } = extension.value.storage as CodeBlockStorage
 const displayLanguageName = computed(() => languages.find(item => item.name === language.value)?.displayName)
