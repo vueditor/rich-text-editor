@@ -8,7 +8,7 @@ const { extension, node } = toRefs(props)
 
 const language = computed({
   get() {
-    return node.value.attrs.language
+    return node.value.attrs.language ?? 'text'
   },
   set(language) {
     props.updateAttributes({
