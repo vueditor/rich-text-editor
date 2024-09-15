@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { NodeViewProps } from '@tiptap/vue-3'
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-3'
-import type { CodeBlockStorage } from './index'
+import type { CodeBlockStorage } from '@vueditor/tiptap-extension-code-block'
 
 const props = defineProps<NodeViewProps>()
 const { extension, node } = toRefs(props)
