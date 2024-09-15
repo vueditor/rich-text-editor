@@ -8,12 +8,14 @@ const props = withDefaults(defineProps<{
   strategy?: Strategy
   offset?: number
   disabled?: boolean
+  teleport?: boolean
 }>(), {
   mode: 'hover',
   placement: 'top',
   strategy: 'fixed',
   offset: 4,
   disabled: false,
+  teleport: true,
 })
 const emit = defineEmits(['open', 'close'])
 
@@ -96,7 +98,7 @@ defineExpose({
 <template>
   <div ref="referenceRef" class="inline-block" :class="{ 'cursor-not-allowed': disabled }" @click="onClickReference">
     <slot />
-    <Teleport to="body">
+    <Teleport to="body" :disabled="!teleport">
       <Transition name="fade">
         <div v-show="visibleDebounced" ref="floatingRef" class="rounded-2 bg-gray-100 p-2 transition-transform shadow-surround dark:bg-gray-900 dark:shadow-stone-700" :style="{ ...floatingStyles, zIndex }">
           <slot name="floating" />

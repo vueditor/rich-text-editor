@@ -7,9 +7,12 @@ export interface DropdownOption {
   command: () => void
 }
 
-defineProps<{
+withDefaults(defineProps<{
   options: DropdownOption[]
-}>()
+  teleport?: boolean
+}>(), {
+  teleport: true,
+})
 
 const floating = ref<InstanceType<typeof Floating>>()
 function onCommand(command: DropdownOption['command']) {
@@ -19,10 +22,10 @@ function onCommand(command: DropdownOption['command']) {
 </script>
 
 <template>
-  <Floating ref="floating" mode="click" placement="bottom-start">
+  <Floating ref="floating" mode="click" placement="bottom-start" :teleport="teleport">
     <slot />
     <template #floating>
-      <ul class="my-0 list-none pl-0">
+      <ul class="my-0 max-h-100 list-none overflow-auto pl-0">
         <li
           v-for="item in options"
           :key="item.label"
