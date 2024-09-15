@@ -28,8 +28,14 @@ export interface CodeBlockOptions extends TiptapCodeBlockOptions {
   }
 }
 
+export interface CodeBlockStorageLanguage {
+  name: string
+  displayName: string
+}
+
 export interface CodeBlockStorage {
   highlighter: HighlighterCore
+  languages: CodeBlockStorageLanguage[]
 }
 
 export const codeBlock = CodeBlock.extend<CodeBlockOptions, CodeBlockStorage>({
@@ -49,9 +55,21 @@ export const codeBlock = CodeBlock.extend<CodeBlockOptions, CodeBlockStorage>({
       themes: Object.values(this.options.themes),
       engine: createJavaScriptRegexEngine(),
     })
+    const languages = Array.from(new Set(this.options.languages.map(language => language.map(item => ({
+      name: item.name,
+      displayName: item.displayName,
+    })).filter(item => !!item.displayName)).flat(2))).reduce<CodeBlockStorageLanguage[]>((languages, item) => {
+      if (languages.find(language => language.name === item.name)) {
+        return languages
+      }
+
+      languages.push(item as CodeBlockStorageLanguage)
+      return languages
+    }, [])
 
     return {
       highlighter,
+      languages,
     }
   },
   addProseMirrorPlugins() {
