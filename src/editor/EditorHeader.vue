@@ -59,6 +59,8 @@ const downloadOptions: DropdownOption[] = [
       <EditorBasicMarks :editor="editor" />
       <div class="mx-2 divider-y h-6 bg-stone-300 dark:bg-stone-600" />
       <EditorBasicNodes :editor="editor" />
+      <div class="mx-2 divider-y h-6 bg-stone-300 dark:bg-stone-600" />
+      <EditorIndent :editor="editor" />
     </div>
     <div class="flex items-center">
       <EditorCount v-if="editor" :editor="editor" />

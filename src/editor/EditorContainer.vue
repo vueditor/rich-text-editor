@@ -18,6 +18,7 @@ import { link } from './extensions/link'
 import { trailingNode } from './extensions/trailingNode'
 import { superscript } from './extensions/superscript'
 import { subscript } from './extensions/subscript'
+import { indent } from './extensions/indent'
 import { slashMenu } from './extensions/slashMenu'
 import { hashRecord } from './extensions/hashRecord'
 
@@ -39,6 +40,7 @@ const editor = useEditor({
     underline,
     superscript,
     subscript,
+    indent,
     placeholder.configure({
       placeholder: ({ node }) => {
         switch (node.type.name) {
