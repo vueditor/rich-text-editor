@@ -16,6 +16,7 @@ declare module 'vue' {
     EditorFloating: typeof import('./src/editor/EditorFloating.vue')['default']
     EditorHandle: typeof import('./src/editor/EditorHandle.vue')['default']
     EditorHeader: typeof import('./src/editor/EditorHeader.vue')['default']
+    EditorHistory: typeof import('./src/editor/EditorHistory.vue')['default']
     EditorImage: typeof import('./src/editor/extensions/image/EditorImage.vue')['default']
     EditorIndent: typeof import('./src/editor/EditorIndent.vue')['default']
     EditorLink: typeof import('./src/editor/extensions/link/EditorLink.vue')['default']
